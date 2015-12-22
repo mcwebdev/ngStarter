@@ -1,0 +1,149 @@
+/*
+#c9c9c9
+#e3e3e3
+#9ad3de
+#89bdd3
+    #a7a37e
+*/
+html, body {
+  font-family: 'Work Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0,0,0,.01) 0 0 1px;
+  font-size:14px;
+  height:100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Toolbar area */
+.secondary{ opacity: .75;}
+.menu {
+  background-color: transparent;
+  border: none;
+  height: 38px;
+  margin: 16px;
+  width: 36px;
+}
+
+
+/* Sidenav area */
+
+md-list .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+  md-list .md-button.selected {
+    color: #03a9f4;
+  }
+
+  md-sidenav  md-list {
+    padding: 0px 0px 8px 0px;
+  }
+
+
+/* Primary content area */
+
+
+.content  {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 5px;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.content .md-button.contact {
+  background-color: transparent;
+  border: none;
+  width: 48px;
+  height: 48px;
+  margin: 8px auto 16px 0;
+  position: absolute;
+  top: 10px;
+  right: 40px;
+}
+
+.content md-icon.avatar {
+  margin-top: 10px;
+}
+
+.content .md-button.contact > md-icon {
+  fill:black;
+  width:36px;
+  height:36px;
+}
+
+md-button.menuBtn > md-icon {
+  fill:white;
+  width:24px;
+  height:24px;
+}
+
+.content .md-button.contact:active > md-icon {
+  background-color: #c9c9c9;
+  border-radius: 75%;
+  padding:4px;
+  transition: all 100ms ease-out 30ms;
+}
+
+.content img {
+  display: block;
+  height: auto;
+  max-width: 500px;
+}
+
+/* Utils */
+
+.content-wrapper {
+  position: relative;
+}
+
+/* Typography support coming in 0.8.0 */
+md-toolbar{ min-height: initial;}
+md-toolbar h1 {
+  padding:0 15px;
+    margin: 0;
+  width: 100%;
+  font-size: 1.250em;
+  font-weight: 400;
+}
+
+.avatar {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0px;
+  vertical-align: middle;
+  zoom:0.70;
+  transform: translateZ(0);
+  -webkit-transform: scale(0.70);
+  -moz-transform:scale(0.70);
+}
+.quick-nav{ margin: 0;padding: 0;position: relative;left: -3px;}
+.quick-nav li{ display: inline-block;}
+md-bottom-sheet  md-icon {
+  margin-right:20px;
+}
+
+span.name {
+  font-weight: bold;
+  font-size:1.1em;
+  padding-left:5px;
+}
+.inline-form{ }
+.vAccordion--default v-pane-header{ margin-bottom: 0;padding: 15px;}
+v-pane-header:hover{  background: #9ad3de;}
+.vAccordion--default v-pane-header:hover, .vAccordion--default v-pane-header:focus{color: #fff;}
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){ background: #74A0B3;}
+md-card{ box-shadow: none;}
+md-sidenav{ background: #e3e3e3;}
+v-pane{ background: #89bdd3;border-bottom: solid 1px white;color: #fff;}
+.vAccordion--default v-pane-header{ border-bottom: none;}
+.vAccordion--default v-pane-header::after, .vAccordion--default v-pane-header::before{ display: none;}
+v-pane-content div{ color: #9ad3de;}
