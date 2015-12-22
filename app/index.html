@@ -27,7 +27,7 @@
 
 </head>
 
-<body layout="row" ng-app="starterApp" ng-controller="showController as ul" ng-cloak>
+<body layout="row" ng-app="starterApp" ng-cloak="">
 <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
     <md-icon md-svg-icon="assets/svg/menu.svg"></md-icon>
 </md-button>
@@ -169,7 +169,7 @@
     </md-sidenav>
 
 
-<div flex tabIndex="-1" role="main" class="md-whiteframe-z2">
+<div flex tabIndex="-1" role="main" class="md-whiteframe-z2"  ng-controller="showController as ul">
 
     <v-accordion class="vAccordion--default" multiple>
 
@@ -346,14 +346,61 @@
                                 </md-content>
                             </div>
                         </div>
-                        <div ng-show="collapsedProductionInfo" class="inline-form">
 
-                           prod
-
-                        </div>
                     </div>
 
                 </md-content>
+                <div ng-show="collapsedProductionInfo">
+
+                    <div>
+                        <md-card ng-controller="shows">
+
+                            <md-data-table-container>
+                                <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
+                                    <thead md-order="query.order" md-trigger="onorderchange">
+                                    <tr>
+                                        <th order-by="name" name="Show Title"></th>
+                                        <th order-by="type" name="Show Network"></th>
+                                        <th numeric order-by="code.value" name="Show Code"></th>
+                                        <th order-by="name" name="Show Status"></th>
+                                        <th numeric order-by="runtime.value" name="Run Time Duration"></th>
+                                        <th order-by="name" name="Show Description"></th>
+                                        <th order-by="name" name="Show Category"></th>
+                                        <th order-by="name" name="Show Genre"></th>
+                                        <th order-by="name" name="Show Production Company"></th>
+                                        <th order-by="name" name="Show Supplier"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
+                                        <td>
+                                            <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
+                                                <img src="{{it.avatar}}" class="avatar" />
+
+                                                {{it.name}}
+                                            </md-button>
+                                        </td>
+                                        <td>
+                                            {{it.networkName}}
+                                        </td>
+                                        <td>{{it.code}}</td>
+                                        <td>{{it.status}}</td>
+                                        <td>{{it.runtime}}</td>
+                                        <td>{{it.description}}</td>
+                                        <td>{{it.category}}</td>
+                                        <td>{{it.genre}}</td>
+                                        <td>{{it.productionCompany}}</td>
+                                        <td>{{it.Supplier}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-data-table-container>
+
+                            <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{ul.shows.length}}" md-trigger="onpagechange"></md-data-table-pagination>
+                        </md-card>
+                    </div>
+
+                </div>
             </v-pane-content>
         </v-pane>
     </v-accordion>
@@ -370,7 +417,7 @@
     <script src="./src/shows/shows.js"></script>
     <script src="./src/shows/showsController.js"></script>
     <script src="./src/shows/showsService.js"></script>
-    
+
 
     <script type="text/javascript">
 
