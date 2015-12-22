@@ -40,12 +40,9 @@
      * First hide the bottomsheet IF visible, then
      * hide or Show the 'left' sideNav area
      */
-    function toggleShowsList() {
-      var pending = $mdBottomSheet.hide() || $q.when(true);
 
-      pending.then(function(){
-        $mdSidenav('left').toggle();
-      });
+    function toggleShowsList() {
+        $mdSidenav('selectedShow').toggle();
     }
 
     /**

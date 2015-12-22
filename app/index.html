@@ -28,14 +28,15 @@
 </head>
 
 <body ng-app="starterApp" layout="row" ng-controller="showController as ul" ng-cloak>
+<md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
+    <md-icon md-svg-icon="assets/svg/menu.svg"></md-icon>
+</md-button>
+<md-sidenav md-component-id="selectedShow" class="md-sidenav-left">Selected Show</md-sidenav>
+<md-sidenav md-component-id="left" class="md-sidenav-left">
 
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-                md-component-id="left"
-                md-is-locked-open="$mdMedia('gt-sm')">
-
-        <md-toolbar>
+        <md-toolbar ng-controller="showController">
             <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" aria-label="Settings">
+                <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
                     <md-icon md-svg-icon="assets/svg/menu.svg"></md-icon>
                 </md-button>
                 <h2>
@@ -162,7 +163,7 @@
                     Pane content #1
                 </v-pane-content>
             </v-pane>
-            
+
         </v-accordion>
 
     </md-sidenav>
@@ -243,27 +244,28 @@
 
             <v-pane-content>
                 <md-content flex="" class="content">
+                    <ul class="quick-nav">
+                        <li>
+                            <md-button ng-model="collapsedGeneralInfo" ng-click="collapsedGeneralInfo=!collapsedGeneralInfo">
+                                <md-icon md-svg-icon="assets/svg/info.svg"></md-icon>
+                                General Info
+                            </md-button>
+                        </li>
+
+                        <li>
+                            <md-button ng-model="collapsedProductionInfo" ng-click="collapsedProductionInfo=!collapsedProductionInfo">
+                                <md-icon md-svg-icon="assets/svg/production.svg"></md-icon>
+                                Production
+                            </md-button>
+                        </li>
+                    </ul>
                     <img src="{{ul.selected.avatar}}" class="avatar" />
 
                     <h2>{{ul.selected.name}}</h2>
                     <p>{{ul.selected.content}}</p>
                     <div class="md-list md-has-header">
 
-                        <md-list>
-                            <md-item>
-                                <md-button ng-model="collapsedGeneralInfo" ng-click="collapsedGeneralInfo=!collapsedGeneralInfo">
-                                    <md-icon md-svg-icon="assets/svg/info.svg"></md-icon>
-                                    General Info
-                                </md-button>
-                            </md-item>
 
-                            <md-item>
-                                <md-button ng-model="collapsedProductionInfo" ng-click="collapsedProductionInfo=!collapsedProductionInfo">
-                                    <md-icon md-svg-icon="assets/svg/production.svg"></md-icon>
-                                    Production
-                                </md-button>
-                            </md-item>
-                        </md-list>
                         <div ng-show="collapsedGeneralInfo" ng-controller="showController" class="inline-form">
                             <div layout="column" ng-cloak class="md-inline-form">
                                 <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
@@ -384,7 +386,7 @@
                     .primaryPalette('blue')
                     .accentPalette('red');
 
-            }).controller('shows', ['$q', '$scope', '$timeout', function ($q, $scope, $timeout) {
+            }).controller('shows', ['$q', '$scope', '$timeout', '$mdSidenav', function ($q, $scope, $timeout, $mdSidenav) {
 
                 $scope.selected = [];
 
@@ -398,6 +400,10 @@
 
                 $scope.getTypes = function () {
                     return ['Candy', 'Ice cream', 'Other', 'Pastry'];
+                };
+
+                $scope.openLeftMenu = function() {
+                    $mdSidenav('left').toggle();
                 };
 
                 $scope.onpagechange = function (page, limit) {

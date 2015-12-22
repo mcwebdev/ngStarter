@@ -44,8 +44,8 @@ md-list .md-button {
 
 
 /* Primary content area */
-
-
+md-data-table-pagination, thead{ background:#e3e3e3; }
+md-card{ margin: 0;}
 .content  {
   padding-left: 40px;
   padding-right: 40px;
@@ -103,7 +103,7 @@ md-button.menuBtn > md-icon {
 /* Typography support coming in 0.8.0 */
 md-toolbar{ min-height: initial;}
 md-toolbar h1 {
-  padding:0 15px;
+  padding:15px;
     margin: 0;
   width: 100%;
   font-size: 1.250em;
@@ -137,7 +137,8 @@ span.name {
   padding-left:5px;
 }
 .inline-form{ }
-.vAccordion--default v-pane-header{ margin-bottom: 0;padding: 15px;}
+.vAccordion--default v-pane-header{ margin-bottom: 0; padding: 0;}
+.vAccordion--default v-pane-content > div { padding-bottom: 0;}
 v-pane-header:hover{  background: #9ad3de;}
 .vAccordion--default v-pane-header:hover, .vAccordion--default v-pane-header:focus{color: #fff;}
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){ background: #74A0B3;}
