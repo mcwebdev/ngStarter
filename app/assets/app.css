@@ -144,7 +144,9 @@ v-pane-header:hover{  background: #9ad3de;}
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){ background: #74A0B3;}
 md-card{ box-shadow: none;}
 md-sidenav{ background: #e3e3e3;}
-v-pane{ background: #89bdd3;border-bottom: solid 1px white;color: #fff;}
 .vAccordion--default v-pane-header{ border-bottom: none;}
 .vAccordion--default v-pane-header::after, .vAccordion--default v-pane-header::before{ display: none;}
 v-pane-content div{ color: #9ad3de;}
+.slide-out v-pane{ background: #89bdd3; border-bottom: solid 1px #74A0B3; color: #fff;}
+.slide-out v-pane-header{ padding: 8px;}
+.slide-out v-pane-content div{ background: #fff;padding: 8px; border-top: solid 1px #74A0B3;}
