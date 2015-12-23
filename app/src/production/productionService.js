@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('shows')
+  angular.module('production')
          .service('showsService', ['$q', showsService]);
 
   /**
@@ -13,7 +13,7 @@
    * @constructor
    */
   function showsService($q){
-    var shows = [
+    var production = [
       {
         name: 'Simpsons, the',
         networkName:'CBS',
@@ -118,7 +118,7 @@
     return {
       loadAllShows : function() {
         // Simulate async nature of real remote calls
-        return $q.when(shows);
+        return $q.when(production);
       }
     };
   }

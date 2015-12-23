@@ -1,7 +1,7 @@
 (function(){
 
   angular
-       .module('shows')
+       .module('production')
        .controller('showController', [
           'showsService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
           showController
@@ -18,7 +18,7 @@
     var self = this;
 
     self.selected     = null;
-    self.shows        = [ ];
+    self.production        = [ ];
     self.selectShow   = selectShow;
     self.toggleList   = toggleShowsList;
     //self.showContactOptions  = showContactOptions;
@@ -27,9 +27,9 @@
 
     showsService
           .loadAllShows()
-          .then( function( shows ) {
-            self.shows    = [].concat(shows);
-            self.selected = shows[0];
+          .then( function( production ) {
+            self.production    = [].concat(production);
+            self.selected = production[0];
           });
 
     // *********************************
@@ -49,8 +49,8 @@
      * Select the current avatars
      * @param menuId
      */
-    function selectShow ( show ) {
-      self.selected = angular.isNumber(show) ? $scope.shows[show] : show;
+    function selectShow ( production ) {
+      self.selected = angular.isNumber(production) ? $scope.production[production] : production;
       self.toggleList();
     }
 

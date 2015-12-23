@@ -28,148 +28,259 @@
 </head>
 
 <body layout="row" ng-app="starterApp" ng-cloak="">
-<md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
-    <md-icon md-svg-icon="assets/svg/menu.svg"></md-icon>
-</md-button>
-<md-sidenav md-component-id="selectedShow" class="md-sidenav-left">Selected Show</md-sidenav>
+<div flex="initial" layout="column">
+    <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
+        <md-icon md-svg-icon="assets/svg/search.svg"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openSettingsMenu()">
+        <md-icon md-svg-icon="assets/svg/settings.svg"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openDesignerMenu()">
+        <md-icon md-svg-icon="assets/svg/designer.svg"></md-icon>
+    </md-button>
+</div>
+
+<md-sidenav md-component-id="selectedShow" class="md-sidenav-left">
+
+    <md-toolbar ng-controller="showController as ul">
+        <div class="md-toolbar-tools">
+
+            <h2>
+                {{ul.selected.name}}
+            </h2>
+            <span flex></span>
+            <md-button class="" aria-label="Settings" ng-click="ul.toggleShowsList()">
+                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
+            </md-button>
+
+
+        </div>
+    </md-toolbar>
+
+
+    <md-content ng-controller="showController as ul">
+        <p>{{ul.selected.content}}</p>
+    </md-content>
+</md-sidenav>
+<md-sidenav md-component-id="settings" class="md-sidenav-left">
+
+    <md-toolbar ng-controller="showController">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
+            </md-button>
+            <h2>
+                <span>Settings</span>
+            </h2>
+            <span flex></span>
+            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openSettingsMenu()">
+                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
+            </md-button>
+
+
+        </div>
+    </md-toolbar>
+
+</md-sidenav>
+<md-sidenav md-component-id="addShow" class="md-sidenav-left">
+
+    <md-toolbar ng-controller="showController">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
+            </md-button>
+            <h2>
+                <span>Add Show</span>
+            </h2>
+            <span flex></span>
+            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
+            </md-button>
+
+
+        </div>
+    </md-toolbar>
+
+</md-sidenav>
+<md-sidenav md-component-id="addVersion" class="md-sidenav-left">
+
+    <md-toolbar ng-controller="showController">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
+            </md-button>
+            <h2>
+                <span>Add Version</span>
+            </h2>
+            <span flex></span>
+            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddVersion()">
+                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
+            </md-button>
+
+
+        </div>
+    </md-toolbar>
+
+</md-sidenav>
+<md-sidenav md-component-id="designer" class="md-sidenav-left">
+
+    <md-toolbar ng-controller="showController">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
+            </md-button>
+            <h2>
+                <span>Designer</span>
+            </h2>
+            <span flex></span>
+            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openDesignerMenu()">
+                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
+            </md-button>
+
+
+        </div>
+    </md-toolbar>
+
+</md-sidenav>
 <md-sidenav md-component-id="left" class="md-sidenav-left">
 
-        <md-toolbar ng-controller="showController">
-            <div class="md-toolbar-tools">
-                <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
-                    <md-icon md-svg-icon="assets/svg/menu.svg"></md-icon>
-                </md-button>
-                <h2>
-                    <span>Search</span>
-                </h2>
-                <span flex></span>
-
-                <md-button class="md-icon-button" aria-label="More">
-                    <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-
-        <!-- add `multiple` attribute to allow multiple sections to open at once -->
-        <v-accordion class="vAccordion--default slide-out" multiple>
-
-            <!-- add expanded attribute to open the section -->
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Networks <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Programs <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Production Cycles <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Distributors <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Contract Rights <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Episodes <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Sports/Teams <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Venue <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Cast / Crew / Awards <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Media <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-            <v-pane>
-                <v-pane-header ng-click="isOpen = !isOpen">
-                    Search Air Dates <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-                </v-pane-header>
-
-                <v-pane-content>
-                    Pane content #1
-                </v-pane-content>
-            </v-pane>
-
-        </v-accordion>
-
-    </md-sidenav>
+    <md-toolbar ng-controller="showController">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
+            </md-button>
+            <h2>
+                <span>Search</span>
+            </h2>
+            <span flex></span>
+            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
+                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
+            </md-button>
 
 
-<div flex tabIndex="-1" role="main" class="md-whiteframe-z2"  ng-controller="showController as ul">
+        </div>
+    </md-toolbar>
+
+    <!-- add `multiple` attribute to allow multiple sections to open at once -->
+    <v-accordion class="vAccordion--default slide-out" multiple>
+
+        <!-- add expanded attribute to open the section -->
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Networks <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Programs <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Production Cycles <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Distributors <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Contract Rights <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Episodes <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Sports/Teams <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Venue <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Cast / Crew / Awards <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Media <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+        <v-pane>
+            <v-pane-header ng-click="isOpen = !isOpen">
+                Search Air Dates <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
+            </v-pane-header>
+
+            <v-pane-content>
+                Pane content #1
+            </v-pane-content>
+        </v-pane>
+
+    </v-accordion>
+
+</md-sidenav>
+
+
+<div flex tabIndex="-1" role="main" class="md-whiteframe-z2" ng-controller="showController as ul">
 
     <v-accordion class="vAccordion--default" multiple>
 
@@ -188,40 +299,38 @@
                         <md-data-table-container>
                             <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
                                 <thead md-order="query.order" md-trigger="onorderchange">
-                                    <tr>
-                                        <th order-by="name" name="Show Title"></th>
-                                        <th order-by="type" name="Show Network"></th>
-                                        <th numeric order-by="code.value" name="Show Code"></th>
-                                        <th order-by="name" name="Show Status"></th>
-                                        <th numeric order-by="runtime.value" name="Run Time Duration"></th>
-                                        <th order-by="name" name="Show Description"></th>
-                                        <th order-by="name" name="Show Category"></th>
-                                        <th order-by="name" name="Show Genre"></th>
-                                        <th order-by="name" name="Show Production Company"></th>
-                                        <th order-by="name" name="Show Supplier"></th>
-                                    </tr>
+                                <tr>
+                                    <th order-by="name" name="Show Title"></th>
+                                    <th order-by="type" name="Show Network"></th>
+                                    <th numeric order-by="code.value" name="Show Code"></th>
+                                    <th order-by="name" name="Show Status"></th>
+                                    <th numeric order-by="runtime.value" name="Run Time Duration"></th>
+                                    <th order-by="name" name="Show Description"></th>
+                                    <th order-by="name" name="Show Category"></th>
+                                    <th order-by="name" name="Show Genre"></th>
+                                    <th order-by="name" name="Show Production Company"></th>
+                                    <th order-by="name" name="Show Supplier"></th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
-                                        <td>
-                                            <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
-                                                <img src="{{it.avatar}}" class="avatar" />
-
-                                                {{it.name}}
-                                            </md-button>
-                                        </td>
-                                        <td>
-                                            {{it.networkName}}
-                                        </td>
-                                        <td>{{it.code}}</td>
-                                        <td>{{it.status}}</td>
-                                        <td>{{it.runtime}}</td>
-                                        <td>{{it.description}}</td>
-                                        <td>{{it.category}}</td>
-                                        <td>{{it.genre}}</td>
-                                        <td>{{it.productionCompany}}</td>
-                                        <td>{{it.Supplier}}</td>
-                                    </tr>
+                                <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
+                                    <td>
+                                        <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
+                                            <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
+                                        </md-button>
+                                    </td>
+                                    <td>
+                                        {{it.networkName}}
+                                    </td>
+                                    <td>{{it.code}}</td>
+                                    <td>{{it.status}}</td>
+                                    <td>{{it.runtime}}</td>
+                                    <td>{{it.description}}</td>
+                                    <td>{{it.category}}</td>
+                                    <td>{{it.genre}}</td>
+                                    <td>{{it.productionCompany}}</td>
+                                    <td>{{it.Supplier}}</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </md-data-table-container>
@@ -239,7 +348,7 @@
                         <md-icon md-svg-icon="menu"></md-icon>
                     </md-button>
                     <h1>Show Details <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i></h1>
-                </md-toolbar> 
+                </md-toolbar>
             </v-pane-header>
 
             <v-pane-content>
@@ -256,6 +365,13 @@
                             <md-button ng-model="collapsedProductionInfo" ng-click="collapsedProductionInfo=!collapsedProductionInfo">
                                 <md-icon md-svg-icon="assets/svg/production.svg"></md-icon>
                                 Production
+                            </md-button>
+                        </li>
+
+                        <li>
+                            <md-button ng-model="collapsedMediaVersion" ng-click="collapsedMediaVersion=!collapsedMediaVersion">
+                                <md-icon md-svg-icon="assets/svg/versions.svg" class="versions-icon"></md-icon>
+                                Media Versions
                             </md-button>
                         </li>
                     </ul>
@@ -323,13 +439,11 @@
                                                 </md-input-container>
                                                 <md-input-container class="md-block" flex-gt-sm>
                                                     <label>Postal Code</label>
-                                                    <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
-                                                           required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                                                    <input name="postalCode" ng-model="user.postalCode" placeholder="12345" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
                                                     <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
                                                         <div ng-message="required" class="my-message">You must supply a postal code.</div>
                                                         <div ng-message="pattern" class="my-message">
-                                                            That doesn't look like a valid postal
-                                                            code.
+                                                            That doesn't look like a valid postal code.
                                                         </div>
                                                         <div ng-message="md-maxlength" class="my-message">
                                                             Don't use the long version silly...we don't need to be that specific...
@@ -353,6 +467,9 @@
                 <div ng-show="collapsedProductionInfo">
 
                     <div>
+                        <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                            <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                        </md-button>
                         <md-card ng-controller="shows">
 
                             <md-data-table-container>
@@ -375,9 +492,104 @@
                                     <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
                                         <td>
                                             <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
-                                                <img src="{{it.avatar}}" class="avatar" />
+                                                <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
+                                            </md-button>
+                                        </td>
+                                        <td>
+                                            {{it.networkName}}
+                                        </td>
+                                        <td>{{it.code}}</td>
+                                        <td>{{it.status}}</td>
+                                        <td>{{it.runtime}}</td>
+                                        <td>{{it.description}}</td>
+                                        <td>{{it.category}}</td>
+                                        <td>{{it.genre}}</td>
+                                        <td>{{it.productionCompany}}</td>
+                                        <td>{{it.Supplier}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-data-table-container>
 
-                                                {{it.name}}
+                            <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{ul.production.length}}" md-trigger="onpagechange"></md-data-table-pagination>
+                        </md-card>
+                    </div>
+
+                </div>
+
+                <div ng-show="collapsedMediaVersion">
+
+                    <div>
+                        <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openAddVersion()">
+                            <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                        </md-button>
+                        <md-card ng-controller="shows">
+
+                            <md-data-table-container>
+                                <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
+                                    <thead md-order="query.order" md-trigger="onorderchange">
+                                    <tr>
+                                        <th order-by="name" name="Show Title"></th>
+                                        <th order-by="type" name="Show Network"></th>
+                                        <th numeric order-by="code.value" name="Show Code"></th>
+                                        <th order-by="name" name="Show Status"></th>
+                                        <th numeric order-by="runtime.value" name="Run Time Duration"></th>
+                                        <th order-by="name" name="Show Description"></th>
+                                        <th order-by="name" name="Show Category"></th>
+                                        <th order-by="name" name="Show Genre"></th>
+                                        <th order-by="name" name="Show Production Company"></th>
+                                        <th order-by="name" name="Show Supplier"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
+                                        <td>
+                                            <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
+                                                <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
+                                            </md-button>
+                                        </td>
+                                        <td>
+                                            {{it.networkName}}
+                                        </td>
+                                        <td>{{it.code}}</td>
+                                        <td>{{it.status}}</td>
+                                        <td>{{it.runtime}}</td>
+                                        <td>{{it.description}}</td>
+                                        <td>{{it.category}}</td>
+                                        <td>{{it.genre}}</td>
+                                        <td>{{it.productionCompany}}</td>
+                                        <td>{{it.Supplier}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-data-table-container>
+
+                            <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{ul.shows.length}}" md-trigger="onpagechange"></md-data-table-pagination>
+                        </md-card>
+
+                        <md-card ng-controller="shows">
+
+                            <md-data-table-container>
+                                <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
+                                    <thead md-order="query.order" md-trigger="onorderchange">
+                                    <tr>
+                                        <th order-by="name" name="Show Title"></th>
+                                        <th order-by="type" name="Show Network"></th>
+                                        <th numeric order-by="code.value" name="Show Code"></th>
+                                        <th order-by="name" name="Show Status"></th>
+                                        <th numeric order-by="runtime.value" name="Run Time Duration"></th>
+                                        <th order-by="name" name="Show Description"></th>
+                                        <th order-by="name" name="Show Category"></th>
+                                        <th order-by="name" name="Show Genre"></th>
+                                        <th order-by="name" name="Show Production Company"></th>
+                                        <th order-by="name" name="Show Supplier"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
+                                        <td>
+                                            <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
+                                                <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
                                             </md-button>
                                         </td>
                                         <td>
@@ -407,37 +619,40 @@
 
 </div>
 
-    <script src="./bower_components/angular/angular.js"></script>
-    <script src="./bower_components/angular-animate/angular-animate.js"></script>
-    <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
-    <script src="./bower_components/angular-aria/angular-aria.js"></script>
-    <script src="./bower_components/v-accordion/dist/v-accordion.js"></script>
-    <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+<script src="./bower_components/angular-aria/angular-aria.js"></script>
+<script src="./bower_components/v-accordion/dist/v-accordion.js"></script>
+<script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
 
-    <script src="./src/shows/shows.js"></script>
-    <script src="./src/shows/showsController.js"></script>
-    <script src="./src/shows/showsService.js"></script>
+<script src="./src/shows/shows.js"></script>
+<script src="./src/shows/showsController.js"></script>
+<script src="./src/shows/showsService.js"></script>
+
+<!--<script src="./src/production/production.js"></script>
+<script src="./src/production/productionController.js"></script>
+<script src="./src/production/productionService.js"></script>-->
 
 
-    <script type="text/javascript">
-
-        angular
+<script type="text/javascript">
+    angular
             .module('starterApp', ['md.data.table', 'ngMaterial', 'vAccordion', 'shows'])
-            .config(function ($mdThemingProvider, $mdIconProvider) {
+            .config(function($mdThemingProvider, $mdIconProvider) {
 
                 $mdIconProvider
-                    .icon("menu", "./assets/svg/menu.svg", 24)
-                    .icon("share", "./assets/svg/share.svg", 24)
-                    .icon("google_plus", "./assets/svg/google_plus.svg", 512)
-                    .icon("hangouts", "./assets/svg/hangouts.svg", 512)
-                    .icon("twitter", "./assets/svg/twitter.svg", 512)
-                    .icon("phone", "./assets/svg/phone.svg", 512);
+                        .icon("menu", "./assets/svg/menu.svg", 24)
+                        .icon("share", "./assets/svg/share.svg", 24)
+                        .icon("google_plus", "./assets/svg/google_plus.svg", 512)
+                        .icon("hangouts", "./assets/svg/hangouts.svg", 512)
+                        .icon("twitter", "./assets/svg/twitter.svg", 512)
+                        .icon("phone", "./assets/svg/phone.svg", 512);
 
                 $mdThemingProvider.theme('default')
-                    .primaryPalette('blue')
-                    .accentPalette('red');
+                        .primaryPalette('blue')
+                        .accentPalette('red');
 
-            }).controller('shows', ['$q', '$scope', '$timeout', '$mdSidenav', function ($q, $scope, $timeout, $mdSidenav) {
+            }).controller( 'shows' , ['$q', '$scope', '$timeout', '$mdSidenav', function($q, $scope, $timeout, $mdSidenav) {
 
                 $scope.selected = [];
 
@@ -449,28 +664,48 @@
 
 
 
-                $scope.getTypes = function () {
+                $scope.getTypes = function() {
                     return ['Candy', 'Ice cream', 'Other', 'Pastry'];
+                };
+
+                $scope.toggleShowsList = function() {
+                    $mdSidenav('selectedShow').toggle();
+                };
+
+                $scope.openAddShow = function() {
+                    $mdSidenav('addShow').toggle();
+                };
+
+                $scope.openAddVersion = function() {
+                    $mdSidenav('addVersion').toggle();
                 };
 
                 $scope.openLeftMenu = function() {
                     $mdSidenav('left').toggle();
                 };
 
-                $scope.onpagechange = function (page, limit) {
+                $scope.openSettingsMenu = function() {
+                    $mdSidenav('settings').toggle();
+                };
+
+                $scope.openDesignerMenu = function() {
+                    $mdSidenav('designer').toggle();
+                };
+
+                $scope.onpagechange = function(page, limit) {
                     var deferred = $q.defer();
 
-                    $timeout(function () {
+                    $timeout(function() {
                         deferred.resolve();
                     }, 2000);
 
                     return deferred.promise;
                 };
 
-                $scope.onorderchange = function (order) {
+                $scope.onorderchange = function(order) {
                     var deferred = $q.defer();
 
-                    $timeout(function () {
+                    $timeout(function() {
                         deferred.resolve();
                     }, 2000);
 
@@ -478,9 +713,7 @@
                 };
             }]);
 
-
-
-    </script>
+</script>
 
 </body>
 

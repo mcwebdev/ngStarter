@@ -101,6 +101,16 @@ md-button.menuBtn > md-icon {
 }
 
 /* Typography support coming in 0.8.0 */
+
+md-sidenav md-icon svg {
+  pointer-events: none;
+  fill: #eee;
+}
+md-icon svg, md-icon {
+  pointer-events: none;
+  fill: #74A0B3;
+  color: #74A0B3;
+}
 md-toolbar{ min-height: initial;}
 md-toolbar h1 {
   padding:15px;
