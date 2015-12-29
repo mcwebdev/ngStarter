@@ -15,6 +15,7 @@
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,100,200,700,500,800' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="./bower_components/jquery-minicolors/jquery.minicolors.css" />
     <link href="./bower_components/v-accordion/dist/v-accordion.css" rel="stylesheet" />
     <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="assets/app.css" />
@@ -38,9 +39,7 @@
     <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openSettingsMenu()">
         <md-icon md-svg-icon="assets/svg/settings.svg"></md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openDesignerMenu()">
-        <md-icon md-svg-icon="assets/svg/designer.svg"></md-icon>
-    </md-button>
+
 </div>
 
 <md-sidenav md-component-id="selectedShow" class="md-sidenav-left">
@@ -269,6 +268,17 @@
 
         </div>
     </md-toolbar>
+    <md-content>
+        <div>
+            Toggle column:
+            <a class="toggle-vis" data-column="0">Name</a> -
+            <a class="toggle-vis" data-column="1">Position</a> -
+            <a class="toggle-vis" data-column="2">Office</a> -
+            <a class="toggle-vis" data-column="3">Age</a> -
+            <a class="toggle-vis" data-column="4">Start date</a>  -
+            <a class="toggle-vis" data-column="5">Salary</a>
+        </div>
+    </md-content>
 
 </md-sidenav>
 
@@ -801,14 +811,68 @@
 
 </div>
 
+<div id="psp">
+    <header>
+        <div id="psp_controls">
+            <div id="toggle_isi" class="btn"><md-icon md-svg-icon="assets/svg/designer.svg"></md-icon></div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h3>Theme Creator</h3>
+            <ul class="mc-controls">
+                <li>
+                    <div class="form-group">
+                        <label for="hidden-input">Primary Background Color</label>
+                        <br>
+                        <input type="hidden" id="mc-primary" class="demo" value="#74A0B3">
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        <label for="hidden-input">Primary Font Color</label>
+                        <br>
+                        <input type="hidden" id="mc-font" class="demo" value="#74A0B3">
+                    </div>
+                </li>
+                <li>
+                    <div class="form-group">
+                        <label for="hidden-input">Table Data Color</label>
+                        <br>
+                        <input type="hidden" id="mc-table-data" class="demo" value="#a7a37e">
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Show/Hide Table Columns</h3>
+            <div>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="0"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Title</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="1"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Network</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="2"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Code</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="3"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Status</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="4"><i class="button__icon icon fa fa-toggle-on"></i><span>Run Time Duration</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="5"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Description</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="6"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Category</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="7"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Genre</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="8"><i class="button__icon icon fa fa-toggle-on"></i><span>Production Company</span></button>
+                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="9"><i class="button__icon icon fa fa-toggle-on"></i><span>Supplier</span></button>
+
+            </div>
+
+    </section>
+    </main>
+    </content>
+</div>
+
 <script src="./bower_components/angular/angular.js"></script>
 <script src="./bower_components/jquery/dist/jquery.js"></script>
 <script src="./bower_components/datatables/media/js/jquery.dataTables.js"></script>
 <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="./bower_components/angular-animate/angular-animate.js"></script>
-<script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+<script src="./bower_components/angular-material/angular-material.js"></script>
 <script src="./bower_components/angular-aria/angular-aria.js"></script>
 <script src="./bower_components/v-accordion/dist/v-accordion.js"></script>
+<script src="./bower_components/jquery-minicolors/jquery.minicolors.js"></script>
 
 
 <script src="./src/shows/shows.js"></script>
@@ -904,6 +968,84 @@
 
 </script>
 <script type="text/javascript">
+
+    $('#mc-primary').minicolors({
+        //opacity: true
+    });
+
+
+    $('#mc-primary[type=hidden]').on('change', function() {
+
+        // This shows how to obtain the hex color and opacity (when in use)
+        var hex = $(this).val(),
+                opacity = $(this).attr('data-opacity');
+
+        $('md-toolbar, #psp_controls').css('backgroundColor', hex);
+
+    });
+
+    $('#mc-font').minicolors({
+        //opacity: true
+    });
+
+
+    $('#mc-font[type=hidden]').on('change', function() {
+
+        // This shows how to obtain the hex color and opacity (when in use)
+        var hex = $(this).val(),
+                opacity = $(this).attr('data-opacity');
+
+        $('v-pane-content div').css('color', hex);
+
+    });
+
+    $('#mc-table-data').minicolors({
+        //opacity: true
+    });
+
+
+    $('#mc-table-data[type=hidden]').on('change', function() {
+
+        // This shows how to obtain the hex color and opacity (when in use)
+        var hex = $(this).val(),
+                opacity = $(this).attr('data-opacity');
+
+        $('td').css('color', hex);
+
+    });
+
+
+    var isi_open = false;
+    var menu_open = false;
+
+    $("#toggle_isi").on("click",function(){
+        if(isi_open){
+            $('#psp').animate({
+                top:"95%"
+            });
+            isi_open = false;
+        }else{
+            $('#psp').animate({
+                top:"46.5%"
+            });
+            isi_open = true;
+        }
+    });
+
+    $('#toggle_nav').on("click", function(){
+        if(menu_open){
+            $('#main_content').stop().animate({
+                marginLeft:0
+            });
+            menu_open = false;
+        }else{
+            $('#main_content').stop().animate({
+                marginLeft:240
+            });
+            menu_open = true;
+        }
+    });
+
     var dataSetShows = [
         [ "Rescue Me", "FOX", "XRM", "Active", "00:30:00", "The crew of the New York City's 62 Truck must face life-and-death situations associated with being a firefighter, protectingtheir true emotions with dark humor.", "Original Series", "Drama ", "TCFTV ", " " ],
         [ "Heros of the Storm", "FOX", "", "Active", "02:00:00", "Loren ipsun So dolar ite", "COMPETITION", " ", " ", " " ],
@@ -935,16 +1077,30 @@
     ];
 
     var dataSetVersions = [
-        [ "Version #" ,  "Version Name" ,  "Run Time Duration", "Media Content Duration",  "Production Number",  "Segments",  "Rough Format",  "Format" ,  "Content Rating",   "Content Rating Desc",
-            "SAP", "CC",  "Default",  "Comment", "Status",  "Netowrk",  "Orig Air Date", "Orig Air Day / Time", "2nd Air Date", "2nd Air Day / Time", "Air Clock" ]
+        [ "Version 33" ,  "New Season" ,  "00:30:00", "00:30:00",  "P5285",  "7",  "HD",  "HDR" ,  "G",   "Fair",
+            "SAP", "CC",  "Default",  "Ipsum Dolar", "Active",  "Fox",  "06/16/14", "04/15/13 / 00:30:00", "2nd Air Date", "04/15/13 / 00:30:00", "04/15/13 / 00:30:00" ]
 
     ];
+
+    var table = $('#example').DataTable( {
+        "scrollY": "200px",
+        "paging": false
+    } );
+
+    $('a.toggle-vis').on( 'click', function (e) {
+        e.preventDefault();
+
+        // Get the column API object
+        var column = table.column( $(this).attr('data-column') );
+
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+    } );
 
     $(document).ready(function() {
 
         var showsTable = $('#shows').DataTable({
             data: dataSetShows,
-            pagination: false,
             columns: [
                 { title: "Show Title" },
                 { title: "Show Network" },
@@ -962,11 +1118,27 @@
         $('#shows tbody').on('click', 'tr', function () {
             var data = showsTable.row( this ).data();
             $( "#gen-info" ).trigger( "click" );
-            //$( "#show-list", "#gen-info" ).trigger( "click" );
+
             $( "#gen-info-toggle" ).trigger( "click" );
             //alert( 'You clicked on '+data[0]+'\'s row' );
-        } );
 
+            function sample() {
+                $( "#show-list" ).trigger( "click" );
+            }
+
+            setTimeout(sample, 600);
+
+
+        } );
+        $('button.toggle-vis').on( 'click', function (e) {
+            e.preventDefault();
+
+            // Get the column API object
+            var column = showsTable.column( $(this).attr('data-column') );
+
+            // Toggle the visibility
+            column.visible( ! column.visible() );
+        } );
 
 
         var productionTable = $('#production').DataTable({

@@ -9,7 +9,8 @@
     "angular": "^1.4.8",
     "angular-aria": "^1.4.8",
     "v-accordion": "~1.4.1",
-    "angular-material-data-table": "~0.8.14"
+    "angular-material-data-table": "~0.8.14",
+    "jquery-minicolors": "~2.2.1"
   },
   "devDependencies": {
     "angular-material": "https://github.com/angular/bower-material.git#master",
