@@ -12,7 +12,9 @@
     "angular-material-data-table": "~0.8.14"
   },
   "devDependencies": {
-    "angular-material": "https://github.com/angular/bower-material.git#master"
+    "angular-material": "https://github.com/angular/bower-material.git#master",
+    "bootstrap": "~3.0.0",
+    "datatables": "git://github.com/DataTables/DataTables.git#4549646891a951ab935d6b3058382186d1f06e22"
   },
   "resolutions": {
     "angular-material": "0.x"

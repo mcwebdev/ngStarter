@@ -9,6 +9,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, show-scalable=no" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bower_components/datatables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="./bower_components/datatables/media/css/jquery.dataTables_themeroller.css">
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,100,200,700,500,800' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css" />
@@ -62,6 +65,7 @@
         <p>{{ul.selected.content}}</p>
     </md-content>
 </md-sidenav>
+
 <md-sidenav md-component-id="settings" class="md-sidenav-left">
 
     <md-toolbar ng-controller="showController">
@@ -82,7 +86,8 @@
     </md-toolbar>
 
 </md-sidenav>
-<md-sidenav md-component-id="addShow" class="md-sidenav-left">
+
+<md-sidenav md-component-id="addShow" class="md-sidenav-left large-slideout">
 
     <md-toolbar ng-controller="showController">
         <div class="md-toolbar-tools">
@@ -90,7 +95,7 @@
                 <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
             </md-button>
             <h2>
-                <span>Add Show</span>
+                <span>Add Episode</span>
             </h2>
             <span flex></span>
             <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
@@ -100,6 +105,130 @@
 
         </div>
     </md-toolbar>
+    <div id="addEpisodeInfo">
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Episode Title</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Short Episode Title</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Run Time Duration</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Traffic Code</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Episode Code</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Link Code</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Episode #</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Series Episode #</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">Status</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option></option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">Content Rating</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option></option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">Content Rating Descriptor</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option></option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">SAP</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option> </option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Broadcast Sequence</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Keywords</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+    </div>
 
 </md-sidenav>
 <md-sidenav md-component-id="addVersion" class="md-sidenav-left">
@@ -142,6 +271,152 @@
     </md-toolbar>
 
 </md-sidenav>
+
+<md-sidenav md-component-id="edit-episode" class="md-sidenav-left large-slideout">
+
+    <md-toolbar ng-controller="showController">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
+            </md-button>
+            <h2>
+                <span>Edit Episode Details</span>
+            </h2>
+            <span flex></span>
+            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
+            </md-button>
+
+
+        </div>
+
+    </md-toolbar>
+    <div id="episode-info">
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Episode Title</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="Blackout">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Short Episode Title</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="Blackout">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Run Time Duration</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="01:00:00:">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Traffic Code</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="XRM06005">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Episode Code</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="XRM-605">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Link Code</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Episode #</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="5">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Series Episode #</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="110">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">Status</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option>Active</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">Content Rating</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option>TV-MA</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">Content Rating Descriptor</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option>L, S, V</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label">SAP</label>
+            <div class="col-sm-8">
+                <select class="form-control">
+                    <option> </option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Broadcast Sequence</label>
+            <div class="col-sm-8">
+                <input class="form-control" value="110">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label  class="col-sm-4 form-control-label">Keywords</label>
+            <div class="col-sm-8">
+                <input class="form-control">
+            </div>
+        </div>
+
+    </div>
+</md-sidenav>
+
 <md-sidenav md-component-id="left" class="md-sidenav-left">
 
     <md-toolbar ng-controller="showController">
@@ -171,7 +446,12 @@
             </v-pane-header>
 
             <v-pane-content>
-                Pane content #1
+                    <div class="form-group row">
+                        <label  class="col-sm-3 form-control-label">Filter</label>
+                        <div class="">
+                            <input class="form-control" value="Blackout">
+                        </div>
+                    </div>
             </v-pane-content>
         </v-pane>
 
@@ -280,70 +560,28 @@
 </md-sidenav>
 
 
-<div flex tabIndex="-1" role="main" class="md-whiteframe-z2" ng-controller="showController as ul">
+<div flex tabIndex="-1" role="main" class="" ng-controller="showController as ul">
 
     <v-accordion class="vAccordion--default" multiple>
 
         <!-- add expanded attribute to open the section -->
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                <md-toolbar class="md-whiteframe-z1 secondary">
+        <v-pane expanded>
+            <v-pane-header ng-click="isOpen = !isOpen" id="show-list">
+                <md-toolbar class="secondary">
                     <h1>Shows<i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i></h1>
                 </md-toolbar>
             </v-pane-header>
 
             <v-pane-content>
-                <div>
-                    <md-card ng-controller="shows">
-
-                        <md-data-table-container>
-                            <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
-                                <thead md-order="query.order" md-trigger="onorderchange">
-                                <tr>
-                                    <th order-by="name" name="Show Title"></th>
-                                    <th order-by="type" name="Show Network"></th>
-                                    <th numeric order-by="code.value" name="Show Code"></th>
-                                    <th order-by="name" name="Show Status"></th>
-                                    <th numeric order-by="runtime.value" name="Run Time Duration"></th>
-                                    <th order-by="name" name="Show Description"></th>
-                                    <th order-by="name" name="Show Category"></th>
-                                    <th order-by="name" name="Show Genre"></th>
-                                    <th order-by="name" name="Show Production Company"></th>
-                                    <th order-by="name" name="Show Supplier"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
-                                    <td>
-                                        <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
-                                            <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
-                                        </md-button>
-                                    </td>
-                                    <td>
-                                        {{it.networkName}}
-                                    </td>
-                                    <td>{{it.code}}</td>
-                                    <td>{{it.status}}</td>
-                                    <td>{{it.runtime}}</td>
-                                    <td>{{it.description}}</td>
-                                    <td>{{it.category}}</td>
-                                    <td>{{it.genre}}</td>
-                                    <td>{{it.productionCompany}}</td>
-                                    <td>{{it.Supplier}}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </md-data-table-container>
-
-                        <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{ul.shows.length}}" md-trigger="onpagechange"></md-data-table-pagination>
-                    </md-card>
+                <div class="sep">
+                    <table id="shows" class="display" width="100%"></table>
                 </div>
             </v-pane-content>
         </v-pane>
 
         <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                <md-toolbar layout="row" class="md-whiteframe-z1 secondary">
+            <v-pane-header ng-click="isOpen = !isOpen" id="gen-info">
+                <md-toolbar layout="row" class="secondary">
                     <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show Show List">
                         <md-icon md-svg-icon="menu"></md-icon>
                     </md-button>
@@ -352,112 +590,168 @@
             </v-pane-header>
 
             <v-pane-content>
+                <ul class="quick-nav">
+                    <li>
+                        <md-button ng-model="collapsedGeneralInfo" ng-click="collapsedGeneralInfo=!collapsedGeneralInfo" id="gen-info-toggle">
+                            <md-icon md-svg-icon="assets/svg/info.svg"></md-icon>
+                            General Info
+                        </md-button>
+                    </li>
+
+                    <li>
+                        <md-button ng-model="collapsedProductionInfo" ng-click="collapsedProductionInfo=!collapsedProductionInfo">
+                            <md-icon md-svg-icon="assets/svg/production.svg"></md-icon>
+                            Production
+                        </md-button>
+                    </li>
+
+                    <li>
+                        <md-button ng-model="collapsedMediaVersion" ng-click="collapsedMediaVersion=!collapsedMediaVersion">
+                            <md-icon md-svg-icon="assets/svg/versions.svg" class="versions-icon"></md-icon>
+                            Media Versions
+                        </md-button>
+                    </li>
+                </ul>
                 <md-content flex="" class="content">
-                    <ul class="quick-nav">
-                        <li>
-                            <md-button ng-model="collapsedGeneralInfo" ng-click="collapsedGeneralInfo=!collapsedGeneralInfo">
-                                <md-icon md-svg-icon="assets/svg/info.svg"></md-icon>
-                                General Info
-                            </md-button>
-                        </li>
 
-                        <li>
-                            <md-button ng-model="collapsedProductionInfo" ng-click="collapsedProductionInfo=!collapsedProductionInfo">
-                                <md-icon md-svg-icon="assets/svg/production.svg"></md-icon>
-                                Production
-                            </md-button>
-                        </li>
-
-                        <li>
-                            <md-button ng-model="collapsedMediaVersion" ng-click="collapsedMediaVersion=!collapsedMediaVersion">
-                                <md-icon md-svg-icon="assets/svg/versions.svg" class="versions-icon"></md-icon>
-                                Media Versions
-                            </md-button>
-                        </li>
-                    </ul>
-                    <img src="{{ul.selected.avatar}}" class="avatar" />
-
-                    <h2>{{ul.selected.name}}</h2>
-                    <p>{{ul.selected.content}}</p>
                     <div class="md-list md-has-header">
 
-
                         <div ng-show="collapsedGeneralInfo" ng-controller="showController" class="inline-form">
-                            <div layout="column" ng-cloak class="md-inline-form">
-                                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
-                                    <div>
-                                        <md-input-container>
-                                            <label>Title</label>
-                                            <input ng-model="user.title">
-                                        </md-input-container>
-                                        <md-input-container>
-                                            <label>Email</label>
-                                            <input ng-model="user.email" type="email">
-                                        </md-input-container>
+                            <div layout="column" ng-cloak class="md-inline-form col-md-6">
+                                <form>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 form-control-label">Network</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option>FX NETWORK</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </md-content>
-                                <md-content layout-padding>
-                                    <div>
-                                        <form name="userForm">
-                                            <div layout-gt-xs="row">
-                                                <md-input-container class="md-block" flex-gt-xs>
-                                                    <label>Company (Disabled)</label>
-                                                    <input ng-model="user.company" disabled>
-                                                </md-input-container>
-                                                <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
-                                                </md-datepicker>
-                                            </div>
-                                            <div layout-gt-sm="row">
-                                                <md-input-container class="md-block" flex-gt-sm>
-                                                    <label>First name</label>
-                                                    <input ng-model="user.firstName">
-                                                </md-input-container>
-                                                <md-input-container class="md-block" flex-gt-sm>
-                                                    <label>Last Name</label>
-                                                    <input ng-model="theMax">
-                                                </md-input-container>
-                                            </div>
-                                            <md-input-container class="md-block">
-                                                <label>Address</label>
-                                                <input ng-model="user.address">
-                                            </md-input-container>
-                                            <md-input-container md-no-float class="md-block">
-                                                <input ng-model="user.address2" placeholder="Address 2">
-                                            </md-input-container>
-                                            <div layout-gt-sm="row">
-                                                <md-input-container class="md-block" flex-gt-sm>
-                                                    <label>City</label>
-                                                    <input ng-model="user.city">
-                                                </md-input-container>
-                                                <md-input-container class="md-block" flex-gt-sm>
-                                                    <label>State</label>
-                                                    <md-select ng-model="user.state">
-                                                        <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                                                            {{state.abbrev}}
-                                                        </md-option>
-                                                    </md-select>
-                                                </md-input-container>
-                                                <md-input-container class="md-block" flex-gt-sm>
-                                                    <label>Postal Code</label>
-                                                    <input name="postalCode" ng-model="user.postalCode" placeholder="12345" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-                                                    <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
-                                                        <div ng-message="required" class="my-message">You must supply a postal code.</div>
-                                                        <div ng-message="pattern" class="my-message">
-                                                            That doesn't look like a valid postal code.
-                                                        </div>
-                                                        <div ng-message="md-maxlength" class="my-message">
-                                                            Don't use the long version silly...we don't need to be that specific...
-                                                        </div>
-                                                    </div>
-                                                </md-input-container>
-                                            </div>
-                                            <md-input-container class="md-block">
-                                                <label>Biography</label>
-                                                <textarea ng-model="user.biography" columns="1" md-maxlength="150" rows="5"></textarea>
-                                            </md-input-container>
-                                        </form>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 form-control-label">TYPE</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option>Series</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </md-content>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Show Title</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" value="Rescue Me">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Short Show Title</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" value="Rescue Me">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Show Code</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" value="XRM">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 form-control-label">Primary Category</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option>ORIGINAL SERIES</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Description</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" rows="3" placeholder="The crew of the New York City's 62 Truck must face life-and-death situations associated with being a firefighter, protectingtheir true emotions with dark humor."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Run Time Duration</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" name="quantity" min="1" max="5">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Production Company</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" value="TCFTV">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 form-control-label">SAP</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option></option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Close Captioned</label>
+                                        <div class="col-sm-10">
+                                            <input type="checkbox" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 form-control-label">Status</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option>Active</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 form-control-label">Series Type</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option>Original</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label  class="col-sm-2 form-control-label">Genres</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" value="Drama">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 form-control-label">Language</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control">
+                                                <option>English</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
@@ -467,52 +761,24 @@
                 <div ng-show="collapsedProductionInfo">
 
                     <div>
-                        <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
-                            <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                        <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                          Add Production Cycle  <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                         </md-button>
-                        <md-card ng-controller="shows">
+                        <div class="sep">
+                            <table id="production" class="display" width="100%"></table>
+                        </div>
 
-                            <md-data-table-container>
-                                <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
-                                    <thead md-order="query.order" md-trigger="onorderchange">
-                                    <tr>
-                                        <th order-by="name" name="Show Title"></th>
-                                        <th order-by="type" name="Show Network"></th>
-                                        <th numeric order-by="code.value" name="Show Code"></th>
-                                        <th order-by="name" name="Show Status"></th>
-                                        <th numeric order-by="runtime.value" name="Run Time Duration"></th>
-                                        <th order-by="name" name="Show Description"></th>
-                                        <th order-by="name" name="Show Category"></th>
-                                        <th order-by="name" name="Show Genre"></th>
-                                        <th order-by="name" name="Show Production Company"></th>
-                                        <th order-by="name" name="Show Supplier"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
-                                        <td>
-                                            <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
-                                                <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
-                                            </md-button>
-                                        </td>
-                                        <td>
-                                            {{it.networkName}}
-                                        </td>
-                                        <td>{{it.code}}</td>
-                                        <td>{{it.status}}</td>
-                                        <td>{{it.runtime}}</td>
-                                        <td>{{it.description}}</td>
-                                        <td>{{it.category}}</td>
-                                        <td>{{it.genre}}</td>
-                                        <td>{{it.productionCompany}}</td>
-                                        <td>{{it.Supplier}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </md-data-table-container>
+                        <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                            Add Episode  <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                        </md-button>
 
-                            <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{ul.production.length}}" md-trigger="onpagechange"></md-data-table-pagination>
-                        </md-card>
+                        <md-button class="" id="edit-episode-toggle" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                            Edit Episode  <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                        </md-button>
+
+                        <div class="sep2">
+                            <table id="episodes" class="display" width="100%"></table>
+                        </div>
                     </div>
 
                 </div>
@@ -523,93 +789,9 @@
                         <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openAddVersion()">
                             <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                         </md-button>
-                        <md-card ng-controller="shows">
-
-                            <md-data-table-container>
-                                <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
-                                    <thead md-order="query.order" md-trigger="onorderchange">
-                                    <tr>
-                                        <th order-by="name" name="Show Title"></th>
-                                        <th order-by="type" name="Show Network"></th>
-                                        <th numeric order-by="code.value" name="Show Code"></th>
-                                        <th order-by="name" name="Show Status"></th>
-                                        <th numeric order-by="runtime.value" name="Run Time Duration"></th>
-                                        <th order-by="name" name="Show Description"></th>
-                                        <th order-by="name" name="Show Category"></th>
-                                        <th order-by="name" name="Show Genre"></th>
-                                        <th order-by="name" name="Show Production Company"></th>
-                                        <th order-by="name" name="Show Supplier"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
-                                        <td>
-                                            <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
-                                                <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
-                                            </md-button>
-                                        </td>
-                                        <td>
-                                            {{it.networkName}}
-                                        </td>
-                                        <td>{{it.code}}</td>
-                                        <td>{{it.status}}</td>
-                                        <td>{{it.runtime}}</td>
-                                        <td>{{it.description}}</td>
-                                        <td>{{it.category}}</td>
-                                        <td>{{it.genre}}</td>
-                                        <td>{{it.productionCompany}}</td>
-                                        <td>{{it.Supplier}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </md-data-table-container>
-
-                            <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{ul.shows.length}}" md-trigger="onpagechange"></md-data-table-pagination>
-                        </md-card>
-
-                        <md-card ng-controller="shows">
-
-                            <md-data-table-container>
-                                <table md-data-table class="md-primary" md-row-select="selected" md-progress="deferred">
-                                    <thead md-order="query.order" md-trigger="onorderchange">
-                                    <tr>
-                                        <th order-by="name" name="Show Title"></th>
-                                        <th order-by="type" name="Show Network"></th>
-                                        <th numeric order-by="code.value" name="Show Code"></th>
-                                        <th order-by="name" name="Show Status"></th>
-                                        <th numeric order-by="runtime.value" name="Run Time Duration"></th>
-                                        <th order-by="name" name="Show Description"></th>
-                                        <th order-by="name" name="Show Category"></th>
-                                        <th order-by="name" name="Show Genre"></th>
-                                        <th order-by="name" name="Show Production Company"></th>
-                                        <th order-by="name" name="Show Supplier"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr md-auto-select ng-repeat="it in ul.shows | orderBy: query.order | limitTo: query.limit: (query.page - 1) * query.limit">
-                                        <td>
-                                            <md-button ng-click="ul.selectShow(it)" ng-class="{'selected' : it === ul.selected }">
-                                                <img src="{{it.avatar}}" class="avatar" /> {{it.name}}
-                                            </md-button>
-                                        </td>
-                                        <td>
-                                            {{it.networkName}}
-                                        </td>
-                                        <td>{{it.code}}</td>
-                                        <td>{{it.status}}</td>
-                                        <td>{{it.runtime}}</td>
-                                        <td>{{it.description}}</td>
-                                        <td>{{it.category}}</td>
-                                        <td>{{it.genre}}</td>
-                                        <td>{{it.productionCompany}}</td>
-                                        <td>{{it.Supplier}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </md-data-table-container>
-
-                            <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{ul.shows.length}}" md-trigger="onpagechange"></md-data-table-pagination>
-                        </md-card>
+                        <div>
+                            <table id="versions" class="display" width="100%"></table>
+                        </div>
                     </div>
 
                 </div>
@@ -620,11 +802,14 @@
 </div>
 
 <script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/jquery/dist/jquery.js"></script>
+<script src="./bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="./bower_components/angular-animate/angular-animate.js"></script>
 <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
 <script src="./bower_components/angular-aria/angular-aria.js"></script>
 <script src="./bower_components/v-accordion/dist/v-accordion.js"></script>
-<script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+
 
 <script src="./src/shows/shows.js"></script>
 <script src="./src/shows/showsController.js"></script>
@@ -637,7 +822,7 @@
 
 <script type="text/javascript">
     angular
-            .module('starterApp', ['md.data.table', 'ngMaterial', 'vAccordion', 'shows'])
+            .module('starterApp', ['ngMaterial', 'vAccordion', 'shows'])
             .config(function($mdThemingProvider, $mdIconProvider) {
 
                 $mdIconProvider
@@ -692,6 +877,10 @@
                     $mdSidenav('designer').toggle();
                 };
 
+                $scope.editEpisode = function() {
+                    $mdSidenav('edit-episode').toggle();
+                };
+
                 $scope.onpagechange = function(page, limit) {
                     var deferred = $q.defer();
 
@@ -714,7 +903,157 @@
             }]);
 
 </script>
+<script type="text/javascript">
+    var dataSetShows = [
+        [ "Rescue Me", "FOX", "XRM", "Active", "00:30:00", "The crew of the New York City's 62 Truck must face life-and-death situations associated with being a firefighter, protectingtheir true emotions with dark humor.", "Original Series", "Drama ", "TCFTV ", " " ],
+        [ "Heros of the Storm", "FOX", "", "Active", "02:00:00", "Loren ipsun So dolar ite", "COMPETITION", " ", " ", " " ],
+        [ "GRINDER, THE", "FOX", "GRI", "Active", "00:30:00", "Loren ipsun So dolar ite", "COMEDY", " ", " ", " " ],
 
+    ];
+
+    var dataSetProd = [
+        [ "Season 1", "XRM ", "1", "Active", " ","Fiscal 2015 ","19 "," ", " ", "12", "" ],
+        [ "Season 2", "XRM ", "2", "Active", " ","  ","32 "," ", " ", "12", "" ],
+        [ "Season 3", "XRM ", "3", "Active", " ","  ","13 "," ", " ", "12", "" ],
+        [ "Season 4", "XRM ", "4", "Active", " ","  ","13 "," ", " ", "12", "" ],
+        [ "Season 5", "XRM ", "5", "Active", " ","  ","13 "," ", " ", "12", "" ],
+        [ "Season 6", "XRM ", "6", "Active", " ","  ","13 "," ", " ", "12", "" ],
+
+
+    ];
+
+    var dataSetEpisodes = [
+        [ "Legacy", "XRM-601", " ", "1", "106", " ", "00:30:00", "6/28/2010", "TCFTV ", " " ],
+        [ "Change", "XRM-602", " ", "2", "107", " ", "00:30:00",  "6/28/2010 ", " " ],
+        [ "Comeback", "XRM-603", " ", "3", "108", " ", "00:30:00",  "7/04/2010 ", " " ],
+        [ "Breakout", "XRM-604", " ", "4", "109", " ", "00:30:00",  "7/11/2010 ", " " ],
+        [ "Blackout", "XRM-605", " ", "5", "110", " ", "00:30:00", "7/18/2010 ", " " ],
+        [ "Sanctuary", "XRM-606", " ", "6", "111", " ", "00:30:00",  "7/22/2010 ", " " ],
+        [ "Forgiven", "XRM-607", " ", "7", "112", " ", "00:30:00",  "7/28/2010 ", " " ],
+        [ "Cowboy", "XRM-608", " ", "8", "113", " ", "00:30:00",  "8/04/2010 ", " " ],
+
+    ];
+
+    var dataSetVersions = [
+        [ "Version #" ,  "Version Name" ,  "Run Time Duration", "Media Content Duration",  "Production Number",  "Segments",  "Rough Format",  "Format" ,  "Content Rating",   "Content Rating Desc",
+            "SAP", "CC",  "Default",  "Comment", "Status",  "Netowrk",  "Orig Air Date", "Orig Air Day / Time", "2nd Air Date", "2nd Air Day / Time", "Air Clock" ]
+
+    ];
+
+    $(document).ready(function() {
+
+        var showsTable = $('#shows').DataTable({
+            data: dataSetShows,
+            pagination: false,
+            columns: [
+                { title: "Show Title" },
+                { title: "Show Network" },
+                { title: "Show Code" },
+                { title: "Show Status" },
+                { title: "Run Time Duration" },
+                { title: "Show Description" },
+                { title: "Show Category" },
+                { title: "Show Genre" },
+                { title: "Production Company" },
+                { title: "Supplier" }
+            ]
+        });
+
+        $('#shows tbody').on('click', 'tr', function () {
+            var data = showsTable.row( this ).data();
+            $( "#gen-info" ).trigger( "click" );
+            //$( "#show-list", "#gen-info" ).trigger( "click" );
+            $( "#gen-info-toggle" ).trigger( "click" );
+            //alert( 'You clicked on '+data[0]+'\'s row' );
+        } );
+
+
+
+        var productionTable = $('#production').DataTable({
+            data: dataSetProd,
+            pagination: false,
+            columns: [
+                { title: "Name" },
+                { title: "Show Code" },
+                { title: "Production #" },
+                { title: "Status" },
+                { title: "Note" },
+                { title: "Fiscal Year" },
+                { title: "Broadcast Season" },
+                { title: "Rough Format" },
+                { title: "Episode Count" },
+                { title: "Program Category" }
+            ]
+        });
+
+        $('#production tbody').on('click', 'tr', function () {
+            var data = productionTable.row( this ).data();
+            //alert( 'You clicked on '+data[0]+'\'s row' );
+        } );
+
+
+
+        var episodeTable = $('#episodes').DataTable({
+            data: dataSetEpisodes,
+            pagination: false,
+            columns: [
+                { title: "Episode Title" },
+                { title: "Code" },
+                { title: "Link Code" },
+                { title: "Episode #" },
+                { title: "Series Episode #" },
+                { title: "Days" },
+                { title: "Run Time Duration" },
+                { title: "Orig Air Date" }
+            ]
+        });
+
+        $('#episodes tbody').on('click', 'tr', function () {
+            var data = episodeTable.row( this ).data();
+            $( "#show-list" ).trigger( "click" );
+            $( "#edit-episode-toggle" ).trigger( "click" );
+
+            //var episodeInfo = $("#episode-info");
+            //episodeInfo.toggle();
+            //alert( 'You clicked on '+data[0]+'\'s row' );
+        } );
+
+
+
+        var versionsTable = $('#versions').DataTable({
+            data: dataSetVersions,
+            pagination: false,
+            columns: [
+                { title: "Version #" },
+                { title: "Version Name" },
+                { title: "Run Time Duration" },
+                { title: "Media Content Duration" },
+                { title: "Production Number" },
+                { title: "Segments" },
+                { title: "Rough Format" },
+                { title: "Format" },
+                { title: "Content Rating" },
+                { title: "Content Rating Desc" },
+                { title: "SAP" },
+                { title: "CC" },
+                { title: "Default" },
+                { title: "Comment" },
+                { title: "Status" },
+                { title: "Netowrk" },
+                { title: "Orig Air Date" },
+                { title: "Orig Air Day / Time" },
+                { title: "2nd Air Date" },
+                { title: "2nd Air Day / Time" },
+                { title: "Air Clock" }
+            ]
+        });
+        $('#versions tbody').on('click', 'tr', function () {
+            var data = versionsTable.row( this ).data();
+            //alert( 'You clicked on '+data[0]+'\'s row' );
+        } );
+    });
+
+</script>
 </body>
 
 </html>

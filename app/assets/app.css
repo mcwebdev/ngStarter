@@ -3,8 +3,15 @@
 #e3e3e3
 #9ad3de
 #89bdd3
-    #a7a37e
+#a7a37e
 */
+.color{
+  color:#c9c9c9;
+  color:#e3e3e3;
+  color:#9ad3de;
+  color:#89bdd3;
+  color:#a7a37e;
+}
 html, body {
   font-family: 'Work Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -13,8 +20,9 @@ html, body {
   height:100%;
   margin: 0;
   padding: 0;
+  background: #f2f2f2;
 }
-
+.layout-column.flex-initial, .quick-nav { background: #fff;}
 /* Toolbar area */
 .secondary{ opacity: .75;}
 .menu {
@@ -44,14 +52,32 @@ md-list .md-button {
 
 
 /* Primary content area */
+#episode-info, #addEpisodeInfo {  padding: 20px;}
+.md-whiteframe-4dp, .md-whiteframe-z2{ display:table;}
+.dataTables_wrapper {
+  position: relative;
+  clear: both;
+  zoom: 1;
+  margin: 0;
+  padding: 10px;
+}
+.sep{border: 10px solid #eee;
+  -moz-box-shadow:    inset 0 0 10px rgba(167,163,126, 0.6);
+  -webkit-box-shadow: inset 0 0 10px rgba(167,163,126, 0.6);
+  box-shadow:         inset 0 0 10px rgba(167,163,126, 0.6);}
+.sep2{border: 10px solid rgba(167,163,126, 0.2);
+  margin-top: 8px;
+  -moz-box-shadow:    inset 0 0 10px rgba(167,163,126, 0.6);
+  -webkit-box-shadow: inset 0 0 10px rgba(167,163,126, 0.6);
+  box-shadow:         inset 0 0 10px rgba(167,163,126, 0.6);
+}
+td{color:#a7a37e;}
 md-data-table-pagination, thead{ background:#e3e3e3; }
 md-card{ margin: 0;}
 .content  {
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 5px;
-    min-height: 300px;
-    overflow: hidden;
 }
 
 .content .md-button.contact {
@@ -108,9 +134,11 @@ md-sidenav md-icon svg {
 }
 md-icon svg, md-icon {
   pointer-events: none;
-  fill: #74A0B3;
-  color: #74A0B3;
+  fill: #bdd389;
+  color: #97a86d;
 }
+.col-sm-2.form-control-label{ text-align: right;}
+.md-button{ color: #97a86d;}
 md-toolbar{ min-height: initial;}
 md-toolbar h1 {
   padding:15px;
@@ -151,12 +179,13 @@ span.name {
 .vAccordion--default v-pane-content > div { padding-bottom: 0;}
 v-pane-header:hover{  background: #9ad3de;}
 .vAccordion--default v-pane-header:hover, .vAccordion--default v-pane-header:focus{color: #fff;}
-md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){ background: #74A0B3;}
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){ background: #74A0B3; border-bottom: solid 1px #4d7a8d;}
 md-card{ box-shadow: none;}
 md-sidenav{ background: #e3e3e3;}
 .vAccordion--default v-pane-header{ border-bottom: none;}
 .vAccordion--default v-pane-header::after, .vAccordion--default v-pane-header::before{ display: none;}
-v-pane-content div{ color: #9ad3de;}
+v-pane-content div{ color: #74A0B3;}
 .slide-out v-pane{ background: #89bdd3; border-bottom: solid 1px #74A0B3; color: #fff;}
 .slide-out v-pane-header{ padding: 8px;}
-.slide-out v-pane-content div{ background: #fff;padding: 8px; border-top: solid 1px #74A0B3;}
+.slide-out v-pane-content div{ background: #fff;padding: 8px; }
+md-sidenav.large-slideout{    width: 604px;  min-width: 604px; }
