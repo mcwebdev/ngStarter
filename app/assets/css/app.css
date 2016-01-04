@@ -32,7 +32,15 @@ html, body {
   width: 36px;
 }
 
-
+.transition-setting{
+  height: 350px;
+  width: 650px;
+  overflow: hidden;
+  /* background: blanchedalmond; */
+  position: absolute;
+  top: 100px;
+  right: 100px;
+}
 /* Sidenav area */
 
 md-list .md-button {
@@ -75,8 +83,7 @@ md-data-table-pagination, thead{ background:#e3e3e3; }
 .md-inline-form{ margin-top: 25px;}
 md-card{ margin: 0;}
 .content  {
-  padding-left: 40px;
-  padding-right: 40px;
+
 }
 
 .content .md-button.contact {
@@ -198,9 +205,9 @@ v-pane-content div{ color: #74A0B3;}
 .slide-out v-pane{ background: #89bdd3; border-bottom: solid 1px #74A0B3; color: #fff;}
 .slide-out v-pane-header{ padding: 8px;}
 .slide-out v-pane-content div{ background: #fff;padding: 8px; }
-md-sidenav.large-slideout{    width: 604px;  min-width: 604px; }
+md-sidenav.large-slideout{    width: 604px;  min-width: 400px; }
 
-
+.router{ display: none; height: 45px;}
 
 
 
