@@ -1,0 +1,53 @@
+<ul id="tree">
+  <span class="collapse">Program</span>
+  <ul>
+    <li><a href="#">General Info</a></li>
+    <li><span class="collapse">Production</span>
+      <ul>
+        <li><span class="collapse">Series Seasons / Episodes</span>
+          <ul>
+            <li><span class="collapse">Episodes</span>
+              <ul>
+                <li><a href="#">Programs</a></li>
+                <li><a href="#">Basic</a></li>
+                <li><a href="#">Episode Title</a></li>
+                <li><a href="#">Created By</a></li>
+                <li><a href="#">Music Cues</a></li>
+                <li><a href="#">Media Versions</a></li>
+                <li><a href="#">Images</a></li>
+                <li><a href="#">Air Dates</a></li>
+                <li><a href="#">Videos</a></li>
+                <li><a href="#">Episode Note</a></li>
+                <li><a href="#">Format</a></li>
+                <li><a href="#">Usage Rights</a></li>
+                <li><a href="#">Scripts</a></li>
+                <li><a href="#">Non-Linear Schedule</a></li>
+                <li><a href="#">Target Description</a></li>
+                <li><a href="#">Production</a></li>
+                <li><a href="#">Cast Note</a></li>
+                <li><a href="#">Air Window Note</a></li>
+                <li><a href="#">Synopsis</a></li>
+                <li><a href="#">Editorial and S&P Notes</a></li>
+                <li><a href="#">Operation Notes</a></li>
+                <li><a href="#">Program Schedule Names</a></li>
+                <li><a href="#">Production Schedule</a></li>
+              </ul>
+              <li><a href="#">Contracts</a></li>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+<script type="text/javascript">
+   $('span.collapse').next().hide();
+      $("span.collapse").before("<span>+ </span>");
+      $("span.collapse").css("cursor", "pointer");
+      $("span.collapse").click(function() {
+        $(this).next().slideToggle("normal");
+        if ($(this).prev(this).text() == "+ ")
+          $(this).prev(this).replaceWith("<span>- </span>");
+        else if ($(this).prev(this).text() == "- ")
+          $(this).prev(this).replaceWith("<span>+ </span>");
+      });
+</script>

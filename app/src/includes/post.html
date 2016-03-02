@@ -1,0 +1,516 @@
+<script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./bower_components/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script src="./bower_components/v-accordion/dist/v-accordion.js"></script>
+    <script src="./bower_components/jquery-minicolors/jquery.minicolors.js"></script>
+    <script src="./bower_components/classie/classie.js"></script>
+    <script src="./assets/js/jquery.dlmenu.js"></script>
+    <script src="./assets/js/pagetransitions.js"></script>
+
+    <script src="./src/shows/shows.js"></script>
+    <script src="./src/shows/showsController.js"></script>
+    <script src="./src/shows/showsService.js"></script>
+    <script src="./assets/js/nav-component.js"></script>
+
+    <!--<script src="./src/production/production.js"></script>
+<script src="./src/production/productionController.js"></script>
+<script src="./src/production/productionService.js"></script>-->
+
+
+    <script type="text/javascript">
+      angular
+        .module('starterApp', ['ngMaterial', 'vAccordion', 'shows'])
+        .config(function($mdThemingProvider, $mdIconProvider) {
+
+          $mdIconProvider
+            .icon("menu", "./assets/svg/menu.svg", 24)
+            .icon("share", "./assets/svg/share.svg", 24)
+            .icon("google_plus", "./assets/svg/google_plus.svg", 512)
+            .icon("hangouts", "./assets/svg/hangouts.svg", 512)
+            .icon("twitter", "./assets/svg/twitter.svg", 512)
+            .icon("phone", "./assets/svg/phone.svg", 512);
+
+
+
+
+        }).controller('shows', ['$q', '$scope', '$timeout', '$mdSidenav', function($q, $scope, $timeout, $mdSidenav) {
+
+          $scope.selected = [];
+
+          $scope.query = {
+            order: 'name',
+            limit: 5,
+            page: 1
+          };
+
+
+
+          $scope.getTypes = function() {
+            return ['Candy', 'Ice cream', 'Other', 'Pastry'];
+          };
+
+          $scope.toggleShowsList = function() {
+            $mdSidenav('selectedShow').toggle();
+          };
+
+          $scope.openAddShow = function() {
+            $mdSidenav('addShow').toggle();
+          };
+
+          $scope.openAddVersion = function() {
+            $mdSidenav('addVersion').toggle();
+          };
+
+
+
+          $scope.openSettingsMenu = function() {
+            $mdSidenav('settings').toggle();
+          };
+
+          $scope.openDesignerMenu = function() {
+            $mdSidenav('designer').toggle();
+          };
+
+          $scope.editEpisode = function() {
+            $mdSidenav('edit-episode').toggle();
+          };
+
+          $scope.onpagechange = function(page, limit) {
+            var deferred = $q.defer();
+
+            $timeout(function() {
+              deferred.resolve();
+            }, 2000);
+
+            return deferred.promise;
+          };
+
+          $scope.onorderchange = function(order) {
+            var deferred = $q.defer();
+
+            $timeout(function() {
+              deferred.resolve();
+            }, 2000);
+
+            return deferred.promise;
+          };
+        }]);
+
+    </script>
+    <script type="text/javascript">
+      $('span.collapse').next().hide();
+      $("span.collapse").before("<span>+ </span>");
+      $("span.collapse").css("cursor", "pointer");
+      $("span.collapse").click(function() {
+        $(this).next().slideToggle("normal");
+        if ($(this).prev(this).text() == "+ ")
+          $(this).prev(this).replaceWith("<span>- </span>");
+        else if ($(this).prev(this).text() == "- ")
+          $(this).prev(this).replaceWith("<span>+ </span>");
+      });
+
+
+
+
+      $('#mc-primary').minicolors({
+        //opacity: true
+      });
+
+
+      $('#mc-primary[type=hidden]').on('change', function() {
+
+        // This shows how to obtain the hex color and opacity (when in use)
+        var hex = $(this).val(),
+          opacity = $(this).attr('data-opacity');
+
+        $('md-toolbar, #psp_controls').css('backgroundColor', hex);
+
+      });
+
+      $('#mc-font').minicolors({
+        //opacity: true
+      });
+
+
+      $('#mc-font[type=hidden]').on('change', function() {
+
+        // This shows how to obtain the hex color and opacity (when in use)
+        var hex = $(this).val(),
+          opacity = $(this).attr('data-opacity');
+
+        $('v-pane-content div, a').css('color', hex);
+
+      });
+
+      $('#mc-table-data').minicolors({
+        //opacity: true
+      });
+
+
+      $('#mc-table-data[type=hidden]').on('change', function() {
+
+        // This shows how to obtain the hex color and opacity (when in use)
+        var hex = $(this).val(),
+          opacity = $(this).attr('data-opacity');
+
+        $('td').css('color', hex);
+
+      });
+
+
+      var isi_open = false;
+      var menu_open = false;
+
+      $("#toggle_isi").on("click", function() {
+        if (isi_open) {
+          $('#psp').animate({
+            top: "95%"
+          });
+          isi_open = false;
+        } else {
+          $('#psp').animate({
+            top: "45.5%"
+          });
+          isi_open = true;
+        }
+      });
+
+      $('#toggle_nav').on("click", function() {
+        if (menu_open) {
+          $('#main_content').stop().animate({
+            marginLeft: 0
+          });
+          menu_open = false;
+        } else {
+          $('#main_content').stop().animate({
+            marginLeft: 240
+          });
+          menu_open = true;
+        }
+      });
+
+      var dataSetShows = [
+        ["Rescue Me", "FOX", "XRM", "Active", "00:30:00", "The crew of the New York City's 62 Truck must face life-and-death situations associated with being a firefighter, protectingtheir true emotions with dark humor.", "Original Series", "Drama ", "TCFTV ", " "],
+        ["Heros of the Storm", "FOX", "", "Active", "02:00:00", "Loren ipsun So dolar ite", "COMPETITION", " ", " ", " "],
+        ["GRINDER, THE", "FOX", "GRI", "Active", "00:30:00", "Loren ipsun So dolar ite", "COMEDY", " ", " ", " "],
+
+      ];
+
+      var dataSetProd = [
+        ["Season 1", "XRM ", "1", "Active", " ", "Fiscal 2015 ", "19 ", " ", " ", "12", ""],
+        ["Season 2", "XRM ", "2", "Active", " ", "  ", "32 ", " ", " ", "12", ""],
+        ["Season 3", "XRM ", "3", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["Season 4", "XRM ", "4", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["Season 5", "XRM ", "5", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["Season 6", "XRM ", "6", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+
+
+      ];
+
+      var dataSetEpisodes = [
+        ["Legacy", "XRM-601", " ", "1", "106", " ", "00:30:00", "6/28/2010", "TCFTV ", " "],
+        ["Change", "XRM-602", " ", "2", "107", " ", "00:30:00", "6/28/2010 ", " "],
+        ["Comeback", "XRM-603", " ", "3", "108", " ", "00:30:00", "7/04/2010 ", " "],
+        ["Breakout", "XRM-604", " ", "4", "109", " ", "00:30:00", "7/11/2010 ", " "],
+        ["Blackout", "XRM-605", " ", "5", "110", " ", "00:30:00", "7/18/2010 ", " "],
+        ["Sanctuary", "XRM-606", " ", "6", "111", " ", "00:30:00", "7/22/2010 ", " "],
+        ["Forgiven", "XRM-607", " ", "7", "112", " ", "00:30:00", "7/28/2010 ", " "],
+        ["Cowboy", "XRM-608", " ", "8", "113", " ", "00:30:00", "8/04/2010 ", " "],
+
+      ];
+
+      var dataSetVersions = [
+        ["Version 33", "New Season", "00:30:00", "00:30:00", "P5285", "7", "HD", "HDR", "G", "Fair",
+          "SAP", "CC", "Default", "Ipsum Dolar", "Active", "Fox", "06/16/14", "04/15/13 / 00:30:00", "2nd Air Date", "04/15/13 / 00:30:00", "04/15/13 / 00:30:00"
+        ]
+
+      ];
+
+      var table = $('#example').DataTable({
+        "scrollY": "200px",
+        "paging": false
+      });
+
+      $('a.toggle-vis').on('click', function(e) {
+        e.preventDefault();
+
+        // Get the column API object
+        var column = table.column($(this).attr('data-column'));
+
+        // Toggle the visibility
+        column.visible(!column.visible());
+      });
+
+      $(document).ready(function() {
+
+        var showsTable = $('#shows').DataTable({
+          data: dataSetShows,
+          columns: [{
+            title: "Show Title"
+          }, {
+            title: "Show Network"
+          }, {
+            title: "Show Code"
+          }, {
+            title: "Show Status"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Show Description"
+          }, {
+            title: "Show Category"
+          }, {
+            title: "Show Genre"
+          }, {
+            title: "Production Company"
+          }, {
+            title: "Supplier"
+          }]
+        });
+
+        $('#shows tbody').on('click', 'tr', function() {
+          var data = showsTable.row(this).data();
+          $("#gen-info").trigger("click");
+
+          $("#gen-info-toggle").trigger("click");
+          //alert( 'You clicked on '+data[0]+'\'s row' );
+
+          function sample() {
+            $("#show-list").trigger("click");
+            $(".router").fadeIn();
+          }
+
+          setTimeout(sample, 800);
+
+
+        });
+        $('button.toggle-vis').on('click', function(e) {
+          e.preventDefault();
+
+          // Get the column API object
+          var column = showsTable.column($(this).attr('data-column'));
+
+          // Toggle the visibility
+          column.visible(!column.visible());
+        });
+
+
+        $('.show-episodes,  .menu__breadcrumbs a:nth-child(2)').on('click', function(e) {
+          e.preventDefault();
+          $(".inline-form").hide();
+          $(".episodes-container").show().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".production-cycle-container").hide();
+        });
+
+        $('.show-production-cycles, .menu__breadcrumbs a:nth-child(2)').on('click', function(e) {
+          e.preventDefault();
+          $(".episodes-container").hide();
+          $(".production-cycle-container").show().addClass("pt-page-rotateRoomTopIn");
+          $(".media-version-container").hide();
+        });
+
+        $('.show-media-versions, .menu__breadcrumbs a:nth-child(2)').on('click', function(e) {
+          e.preventDefault();
+          $(".episodes-container").hide();
+          $(".production-cycle-container").hide();
+          $(".media-version-container").show().addClass("pt-page-rotateUnfoldTop");
+        });
+
+        var productionTable = $('#production').DataTable({
+          data: dataSetProd,
+          pagination: false,
+          columns: [{
+            title: "Name"
+          }, {
+            title: "Show Code"
+          }, {
+            title: "Production #"
+          }, {
+            title: "Status"
+          }, {
+            title: "Note"
+          }, {
+            title: "Fiscal Year"
+          }, {
+            title: "Broadcast Season"
+          }, {
+            title: "Rough Format"
+          }, {
+            title: "Episode Count"
+          }, {
+            title: "Program Category"
+          }]
+        });
+
+        $('#production tbody').on('click', 'tr', function() {
+          var data = productionTable.row(this).data();
+          //alert( 'You clicked on '+data[0]+'\'s row' );
+        });
+
+
+
+        var episodeTable = $('#episodes').DataTable({
+          data: dataSetEpisodes,
+          pagination: false,
+          columns: [{
+            title: "Episode Title"
+          }, {
+            title: "Code"
+          }, {
+            title: "Link Code"
+          }, {
+            title: "Episode #"
+          }, {
+            title: "Series Episode #"
+          }, {
+            title: "Days"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Orig Air Date"
+          }]
+        });
+
+        $('#episodes tbody').on('click', 'tr', function() {
+          var data = episodeTable.row(this).data();
+          $("#show-list").trigger("click");
+          $("#edit-episode-toggle").trigger("click");
+
+          //var episodeInfo = $("#episode-info");
+          //episodeInfo.toggle();
+          //alert( 'You clicked on '+data[0]+'\'s row' );
+        });
+
+
+
+        var contractsTable = $('#contractsTable').DataTable({
+          data: dataSetEpisodes,
+          pagination: false,
+          columns: [{
+            title: "Episode Title"
+          }, {
+            title: "Code"
+          }, {
+            title: "Link Code"
+          }, {
+            title: "Episode #"
+          }, {
+            title: "Series Episode #"
+          }, {
+            title: "Days"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Orig Air Date"
+          }]
+        });
+
+
+        var nonLinearSchedulingRulesTable = $('#nonLinearSchedulingRulesTable').DataTable({
+          data: dataSetEpisodes,
+          pagination: false,
+          columns: [{
+            title: "Episode Title"
+          }, {
+            title: "Code"
+          }, {
+            title: "Link Code"
+          }, {
+            title: "Episode #"
+          }, {
+            title: "Series Episode #"
+          }, {
+            title: "Days"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Orig Air Date"
+          }]
+        });
+
+
+        var staffTable = $('#staffTable').DataTable({
+          data: dataSetEpisodes,
+          pagination: false,
+          columns: [{
+            title: "Episode Title"
+          }, {
+            title: "Code"
+          }, {
+            title: "Link Code"
+          }, {
+            title: "Episode #"
+          }, {
+            title: "Series Episode #"
+          }, {
+            title: "Days"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Orig Air Date"
+          }]
+        });
+
+
+
+        var versionsTable = $('#versions').DataTable({
+          data: dataSetVersions,
+          pagination: false,
+          columns: [{
+            title: "Version #"
+          }, {
+            title: "Version Name"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Media Content Duration"
+          }, {
+            title: "Production Number"
+          }, {
+            title: "Segments"
+          }, {
+            title: "Rough Format"
+          }, {
+            title: "Format"
+          }, {
+            title: "Content Rating"
+          }, {
+            title: "Content Rating Desc"
+          }, {
+            title: "SAP"
+          }, {
+            title: "CC"
+          }, {
+            title: "Default"
+          }, {
+            title: "Comment"
+          }, {
+            title: "Status"
+          }, {
+            title: "Netowrk"
+          }, {
+            title: "Orig Air Date"
+          }, {
+            title: "Orig Air Day / Time"
+          }, {
+            title: "2nd Air Date"
+          }, {
+            title: "2nd Air Day / Time"
+          }, {
+            title: "Air Clock"
+          }]
+        });
+        $('#versions tbody').on('click', 'tr', function() {
+          var data = versionsTable.row(this).data();
+          //alert( 'You clicked on '+data[0]+'\'s row' );
+        });
+      });
+
+    </script>
+  </body>
+
+</html>

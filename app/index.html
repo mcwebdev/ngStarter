@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Angular Material - Starter App</title>
+
+  <head>
+    <title>Web VPS</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,1591 +25,1573 @@
     <link rel="stylesheet" href="assets/css/component.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
     <script src="./assets/js/modernizr-custom.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
+
+
+    <script src="./assets/js/app.js"></script>
+
+    <script type="text/ng-template" id="partials/view1.html"> View #1 </script>
+    <script type="text/ng-template" id="partials/view2.html"> View #2 </script>
+    <script type="text/ng-template" id="partials/view3.html"> View #3 </script>
+
+    <script type="text/javascript">
+      angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+
+    </script>
+
+
     <style type="text/css">
-        /**
+      /**
          * Hide when Angular is not yet loaded and initialized
          */
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
+      
+      [ng\:cloak],
+      [ng-cloak],
+      [data-ng-cloak],
+      [x-ng-cloak],
+      .ng-cloak,
+      .x-ng-cloak {
+        display: none !important;
+      }
+
     </style>
 
-</head>
+  </head>
 
-<body layout="row" ng-app="starterApp" ng-cloak="">
-<div flex="initial" layout="column">
-    <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
-        <md-icon md-svg-icon="assets/svg/search.svg"></md-icon>
-    </md-button>
-    <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openSettingsMenu()">
-        <md-icon md-svg-icon="assets/svg/settings.svg"></md-icon>
-    </md-button>
+  <body>
 
-</div>
+    <div ng-app="starterApp" ng-cloak="">
 
-<md-sidenav md-component-id="selectedShow" class="md-sidenav-left">
-
-    <md-toolbar ng-controller="showController as ul">
+      <md-toolbar>
         <div class="md-toolbar-tools">
+          <md-button class="go-back" aria-label="Go Back">
+            Go Back
+          </md-button>
+          <h2>
+          
+        </h2>
+          <span flex><i class="fa fa-sitemap show-seasons-toggle"></i> &nbsp;<i class="fa fa-th-large show-grid-layout"></i></span>
+          <md-button class="md-raised accent" aria-label="Learn More">
+            Learn More
+          </md-button>
+          <md-button class="md-fab md-mini" aria-label="Favorite">
+            <md-icon md-svg-icon="assets/svg/favorite.svg"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
 
-            <h2>
-                {{ul.selected.name}}
-            </h2>
-            <span flex></span>
-            <md-button class="" aria-label="Settings" ng-click="ul.toggleShowsList()">
-                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
-            </md-button>
+
+      <div layout="row">
+        <div flex="20" class="tree-nav">
+
+          <div ng-controller="MainController">
+            <!--  Search Results:
+  <ul>
+  <li><a href="Show/X-Files">X-Files</a> </li>
+  <li><a href="Show/X-Files/episodes/Episode 1">X-Files: Episode 1</a> </li>
+  <li><a href="Show/Fargo">Fargo</a>  </li>
+  <li><a href="Show/Fargo/episodes/Episode 4?key=value">Fargo: Episode 4</a>  </li>
+  </ul>
+
+  <div ng-view></div> 
+  <hr />
+  <pre>$location.path() = {{$location.path()}}</pre>
+  <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+  <pre>$route.current.params = {{$route.current.params}}</pre>
+  <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+  <pre>$routeParams = {{$routeParams}}</pre> -->
+          </div>
+
+          <ul id="tree" class="tree" ng-controller="MainController">
+
+            <li> <a href="#" class="active-route">Program</a>
+              <ul>
+                <li><a href="#" class="show-gen-info">General Info</a></li>
+                <li><span class="collapse">Production</span>
+                  <ul>
+                    <li><span class="collapse show-seasons"><a href="/Show/X-Files/Seasons">Series Seasons (7)</a></span>
+                      <ul>
+                        <li><a class="show-episodes" href="/Show/X-Files/Season/Episodes/:episodeId/">Episodes (505) </a></li>
+                        <li><a href=":tabId#Contracts">Contracts</a></li>
+                        <li><a href="#">Non-Linear Scheduling Rules</a></li>
+                        <li><a href="#">Staff</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Broadcast Seasons</a></li>
+                    <li><a href="#">Contract / Air Dates</a></li>
+                  </ul>
+                </li>
+
+                <li><a href="#">Created By</a></li>
+                <li><a href="#">Program Titles</a></li>
+                <li><a href="#">Images</a></li>
+                <li><a href="#">Images</a></li>
+                <li><a href="#">Videos</a></li>
+                <li><a href="#">Alternate Names</a></li>
+                <li><a href="#">Format</a></li>
+                <li><a href="#">Air Dates</a></li>
+                <li><a href="#">Media</a></li>
+                <li><a href="#">Submissions</a></li>
+                <li><a href="#">Program Schedule Names</a></li>
+                <li><a href="#">Creative Staff</a></li>
+                <li><a href="#">Linked Program</a></li>
+                <li><a href="#">Cast Note</a></li>
+                <li><a href="#">Air Window Note</a></li>
+                <li><a href="#">Synopsis</a></li>
+                <li><a href="#">Editorial and S&P Notes</a></li>
+                <li><a href="#">Operation Notes</a></li>
+                <li><a href="#">Program Schedule Names</a></li>
+                <li><a href="#">Production Schedule</a></li>
+
+              </ul>
+            </li>
+          </ul>
+
+
+          <ul id="edit-tree" class="tree" style="display: none;">
+            <li> <a href="#">Program</a>
+              <ul>
+                <li><a href="#" class="genInfo">General Info</a></li>
+                <li><span class="collapse">Production</span>
+                  <ul>
+                    <li><span class="collapse">Series Seasons / Episodes</span>
+                      <ul>
+                        <li><a href="#" class="genInfo">General Info</a></li>
+                        <li><a href="#">Format</a></li>
+                        <li><a href="#">Program Schedule Names</a></li>
+                        <li><a href="#">Non-Linear</a></li>
+                      </ul>
+                      <li>Program Schedules Names</li>
+                      <li>Non-Linear</li>
+                  </ul>
+
+                  <li><a href="#">Created By</a></li>
+                  <li><a href="#">Program Titles</a></li>
+                  <li><a href="#">Images</a></li>
+                  <li><a href="#">Videos</a></li>
+                  <li><a href="#">Alternative Names</a></li>
+                  <li><a href="#">Format</a></li>
+                  <li><a href="#">Episode Note</a></li>
+                  <li><a href="#">Air Dates</a></li>
+                  <li><a href="#">Media</a></li>
+                  <li><a href="#">Submissions</a></li>
+                  <li><a href="#">Program Schedule Names</a></li>
+                  <li><a href="#">Creative Staff</a></li>
+                  <li><a href="#">Linked Program</a></li>
+                  <li><a href="#">Non-Linear Acquired</a></li>
+                  <li><a href="#">Program Links</a></li>
+              </ul>
+              </li>
+
+          </ul>
+
+
 
 
         </div>
-    </md-toolbar>
 
 
-    <md-content ng-controller="showController as ul">
-        <p>{{ul.selected.content}}</p>
-    </md-content>
-</md-sidenav>
+        <div flex="80" tabIndex="-1" role="main" ng-controller="MainController">
+          <div class="breadcrumb-nav" flex layout="row" layout-align="start center">
 
-<md-sidenav md-component-id="settings" class="md-sidenav-left large-slideout">
 
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="More">
+            <ul class="crumb-holder">
+              <li>{{$routeParams.showId }} </li>
+              <li><a href="" class="show-seasons crumb"> {{ $routeParams.seasonId}} </a> </li>
+
+              <li><a href="" class="show-episodes crumb"> {{ $routeParams.episodeId}}  </a> </li>
+
+            </ul>
+
+            <!--  <span>{{$routeParams.showId }}  </span>
+            <a href="" class="show-seasons crumb"> Seasons  </a> <span>{{ $routeParams.seasonId}} </span>
+
+            <a href="" class="show-episodes crumb"> Episodes  </a><span>{{ $routeParams.episodeId}}</span> -->
+          </div>
+          <v-accordion class="vAccordion--default" multiple>
+
+            <!-- add expanded attribute to open the section -->
+            <v-pane expanded>
+              <v-pane-header ng-click="isOpen = !isOpen" id="show-list">
+                <md-toolbar class="secondary">
+                  <h1>  <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i></h1>
+                </md-toolbar>
+              </v-pane-header>
+
+              <v-pane-content>
+
+                <div class="search">
+                  <div flex="20" layout-align="center center"> Search
+                    <input type="search" placeholder="Prime Time" class="form-control">
+                    <div>
+                      Search Results:</div>
+                    <ul class="search-results">
+                      <li><a href="Show/X-Files" id="">X-Files</a> </li>
+                      <li><a href="Show/X-Files/Season 1/">X-Files: Season 1</a> </li>
+                      <li><a href="Show/X-Files/Season 1/Episodes/Episode 1">X-Files: Season 1 Episode 1</a> </li>
+                    </ul>
+
+                  </div>
+                </div>
+
+                <div ng-include="'src/includes/gen-info.html'"></div>
+
+
+
+                <div class="sep" style="display: none;">
+                  <table id="shows" class="display responsive no-wrap" width="100%"></table>
+                </div>
+
+
+
+
+                <div class="production-cycle-container" style="display: none;">
+                  Series Seasons
+                  <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                    Add Production Cycle
+                    <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                  </md-button>
+                  <div class="sep">
+                    <table id="production" class="display responsive no-wrap" width="100%"></table>
+                  </div>
+                </div>
+
+
+                <div class="seasons-container" flex flex-order="1" style="display: none;">
+
+                  <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Series Season
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorSeriesSeason" aria-label="Settings">
+                              Edit Series Season
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+
+                            <table id="seriesSeason" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+
+                        <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Broadcast Season
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorBroadcastSeason" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                              Edit Broadcast Season
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+                            <table id="broadcastSeason" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+
+                        <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Contract
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorContract" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                              Edit Contract
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+                            <table id="contract" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+
+                </div>
+
+
+
+
+                <div class="episodes-container" flex flex-order="2" style="display: none;">
+
+                  <md-content>
+
+                    <md-tabs md-dynamic-height md-border-bottom class="season-tabs">
+                      <md-tab label="Episodes">
+                        <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Episode
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorEpisode" aria-label="Settings" ng-controller="shows">
+                              Edit Episode
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+
+                            <table id="episodes" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+                      </md-tab>
+
+                      <md-tab label="Non-Linear Scheduling Rules">
+                        <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Non-Linear Scheduling Rules
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorRules" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                              Edit Non-Linear Scheduling Rules
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+                            <table id="nonLinearSchedulingRulesTable" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+                      </md-tab>
+
+                      <md-tab label="Commitments">
+                        <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Commitments
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorContract" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                              Edit Commitments
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+                            <table id="contractsTable" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+                      </md-tab>
+
+                      <md-tab label="Rights">
+                        <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Rights
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorContract" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                              Edit Rights
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+                            <table id="contractsTable" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+                      </md-tab>
+
+                      <md-tab label="Staff">
+                        <md-content class="md-padding">
+                          <div layout="row" layout-align="end center" class="tools-node">
+                            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                              Add Staff
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="tempEditorStaff" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                              Edit Staff
+                              <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                            </md-button>
+                          </div>
+                          <div class="sep2">
+
+                            <table id="staffTable" class="display responsive no-wrap" width="100%"></table>
+                          </div>
+                        </md-content>
+                      </md-tab>
+                    </md-tabs>
+
+
+
+                  </md-content>
+                </div>
+
+
+
+
+                <div class="media-version-container" style="display: none;">
+                  <div layout="row" layout-align="end center" class="tools-node">
+                    <div>
+                      <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+                        Add Media Version
+                        <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
+                      </md-button>
+                    </div>
+                    <div>
+
+                      <table id="versions" class="display responsive no-wrap" width="100%"></table>
+                    </div>
+                  </div>
+
+                </div>
+
+              </v-pane-content>
+            </v-pane>
+
+
+          </v-accordion>
+
+        </div>
+
+        <md-sidenav md-component-id="addShow" class="md-sidenav-right large-slideout">
+
+          <md-toolbar ng-controller="showController">
+            <div class="md-toolbar-tools">
+              <md-button class="md-icon-button" aria-label="More">
                 <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
-            </md-button>
-            <h2>
-                <span>Quick View Navigation</span>
-            </h2>
-            <span flex></span>
-            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openSettingsMenu()">
-                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
-            </md-button>
-
-
-        </div>
-
-    </md-toolbar>
-   <!-- <button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu">here</span></button>
-    <nav id="ml-menu" class="nav-menu">
-        <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
-        <div class="menu__wrap">
-            <ul data-menu="main" class="menu__level">
-                <li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Episodes</a></li>
-            </ul>
-            &lt;!&ndash; Submenu 1 &ndash;&gt;
-            <ul data-menu="submenu-1" class="menu__level">
-                <li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">Production Cycles</a></li>
-            </ul>
-            &lt;!&ndash; Submenu 1-1 &ndash;&gt;
-            <ul data-menu="submenu-1-1" class="menu__level">
-                <li class="menu__item"><a class="menu__link" data-submenu="submenu-1-2" href="#">Media Versions</a></li>
-            </ul>
-        </div>
-    </nav>-->
-    <!--<div class="pt-triggers">
-        <button id="iterateEffects" class="pt-touch-button">Show next page transition</button>
-        <div id="dl-menu" class="dl-menuwrapper">
-            <button class="dl-trigger">Choose a transition</button>
-            <ul class="dl-menu">
-                <li>
-                    <a href="#">Move</a>
-                    <ul class="dl-submenu">
-                        <li data-animation="1"><a href="#">Move to left/ from right</a></li>
-                        <li data-animation="2"><a href="#">Move to right/ from left</a></li>
-                        <li data-animation="3"><a href="#">Move to top/ from bottom</a></li>
-                        <li data-animation="4"><a href="#">Move to bottom/ from top</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Fade</a>
-                    <ul class="dl-submenu">
-                        <li data-animation="5"><a href="#">Fade / from right</a></li>
-                        <li data-animation="6"><a href="#">Fade / from left</a></li>
-                        <li data-animation="7"><a href="#">Fade / from bottom</a></li>
-                        <li data-animation="8"><a href="#">Fade / from top</a></li>
-                        <li data-animation="9"><a href="#">Fade left / Fade right</a></li>
-                        <li data-animation="10"><a href="#">Fade right / Fade left</a></li>
-                        <li data-animation="11"><a href="#">Fade top / Fade bottom</a></li>
-                        <li data-animation="12"><a href="#">Fade bottom / Fade top</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Different easing</a>
-                    <ul class="dl-submenu">
-                        <li data-animation="13"><a href="#">Different easing / from right</a></li>
-                        <li data-animation="14"><a href="#">Different easing / from left</a></li>
-                        <li data-animation="15"><a href="#">Different easing / from bottom</a></li>
-                        <li data-animation="16"><a href="#">Different easing / from top</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Scale</a>
-                    <ul class="dl-submenu">
-                        <li data-animation="17"><a href="#">Scale down / from right</a></li>
-                        <li data-animation="18"><a href="#">Scale down / from left</a></li>
-                        <li data-animation="19"><a href="#">Scale down / from bottom</a></li>
-                        <li data-animation="20"><a href="#">Scale down / from top</a></li>
-                        <li data-animation="21"><a href="#">Scale down / scale down</a></li>
-                        <li data-animation="22"><a href="#">Scale up / scale up</a></li>
-                        <li data-animation="23"><a href="#">Move to left / scale up</a></li>
-                        <li data-animation="24"><a href="#">Move to right / scale up</a></li>
-                        <li data-animation="25"><a href="#">Move to top / scale up</a></li>
-                        <li data-animation="26"><a href="#">Move to bottom / scale up</a></li>
-                        <li data-animation="27"><a href="#">Scale down / scale up</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Rotate</a>
-                    <ul class="dl-submenu">
-                        <li>
-                            <a href="#">Glue</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="28"><a href="#">Glue left / from right</a></li>
-                                <li data-animation="29"><a href="#">Glue right / from left</a></li>
-                                <li data-animation="30"><a href="#">Glue bottom / from top</a></li>
-                                <li data-animation="31"><a href="#">Glue top / from bottom</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Flip</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="32"><a href="#">Flip right</a></li>
-                                <li data-animation="33"><a href="#">Flip left</a></li>
-                                <li data-animation="34"><a href="#">Flip top</a></li>
-                                <li data-animation="35"><a href="#">Flip bottom</a></li>
-                            </ul>
-                        </li>
-                        <li data-animation="36"><a href="#">Fall</a></li>
-                        <li data-animation="37"><a href="#">Newspaper</a></li>
-                        <li>
-                            <a href="#">Push / Pull</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="38"><a href="#">Push left / from right</a></li>
-                                <li data-animation="39"><a href="#">Push right / from left</a></li>
-                                <li data-animation="40"><a href="#">Push top / from bottom</a></li>
-                                <li data-animation="41"><a href="#">Push bottom / from top</a></li>
-
-                                <li data-animation="42"><a href="#">Push left / pull right</a></li>
-                                <li data-animation="43"><a href="#">Push right / pull left</a></li>
-                                <li data-animation="44"><a href="#">Push top / pull bottom</a></li>
-                                <li data-animation="45"><a href="#">Push bottom / pull top</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Fold / Unfold</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="46"><a href="#">Fold left / from right</a></li>
-                                <li data-animation="47"><a href="#">Fold right / from left</a></li>
-                                <li data-animation="48"><a href="#">Fold top / from bottom</a></li>
-                                <li data-animation="49"><a href="#">Fold bottom / from top</a></li>
-                                <li data-animation="50"><a href="#">Move to right / unfold left</a></li>
-                                <li data-animation="51"><a href="#">Move to left / unfold right</a></li>
-                                <li data-animation="52"><a href="#">Move to bottom / unfold top</a></li>
-                                <li data-animation="53"><a href="#">Move to top / unfold bottom</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Room</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="54"><a href="#">Room to left</a></li>
-                                <li data-animation="55"><a href="#">Room to right</a></li>
-                                <li data-animation="56"><a href="#">Room to top</a></li>
-                                <li data-animation="57"><a href="#">Room to bottom</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Cube</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="58"><a href="#">Cube to left</a></li>
-                                <li data-animation="59"><a href="#">Cube to right</a></li>
-                                <li data-animation="60"><a href="#">Cube to top</a></li>
-                                <li data-animation="61"><a href="#">Cube to bottom</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Carousel</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="62"><a href="#">Carousel to left</a></li>
-                                <li data-animation="63"><a href="#">Carousel to right</a></li>
-                                <li data-animation="64"><a href="#">Carousel to top</a></li>
-                                <li data-animation="65"><a href="#">Carousel to bottom</a></li>
-                            </ul>
-                        </li>
-                        <li data-animation="66"><a href="#">Sides</a></li>
-                    </ul>
-                </li>
-                <li data-animation="67"><a href="#">Slide</a></li>
-            </ul>
-        </div>&lt;!&ndash; /dl-menu-wrapper&ndash;&gt;
-    </div>&lt;!&ndash; /triggers &ndash;&gt;
-
-    <div id="pt-main" class="pt-perspective">
-        <div class="pt-page pt-page-1"><h1><span>A collection of</span><strong>Page</strong> Transitions</h1></div>
-        <div class="pt-page pt-page-2"><h1><span>A collection of</span><strong>Page</strong> Transitions</h1></div>
-        <div class="pt-page pt-page-3"><h1><span>A collection of</span><strong>Page</strong> Transitions</h1></div>
-        <div class="pt-page pt-page-4"><h1><span>A collection of</span><strong>Page</strong> Transitions</h1></div>
-        <div class="pt-page pt-page-5"><h1><span>A collection of</span><strong>Page</strong> Transitions</h1></div>
-        <div class="pt-page pt-page-6"><h1><span>A collection of</span><strong>Page</strong> Transitions</h1></div>
-    </div>-->
-</md-sidenav>
-
-<md-sidenav md-component-id="addShow" class="md-sidenav-left large-slideout">
-
-    <md-toolbar ng-controller="showController">
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
-            </md-button>
-            <h2>
+              </md-button>
+              <h2>
                 <span>Add Episode</span>
             </h2>
-            <span flex></span>
-            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
+              <span flex></span>
+              <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
                 <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
-            </md-button>
+              </md-button>
 
 
-        </div>
-    </md-toolbar>
-    <div id="addEpisodeInfo">
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Episode Title</label>
-            <div class="col-sm-8">
-                <input class="form-control">
             </div>
-        </div>
-
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Short Episode Title</label>
-            <div class="col-sm-8">
+          </md-toolbar>
+          <div id="addEpisodeInfo">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Episode Title</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Run Time Duration</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Short Episode Title</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Traffic Code</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Run Time Duration</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Episode Code</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Traffic Code</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Link Code</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Episode Code</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Episode #</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Link Code</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Series Episode #</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Episode #</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">Status</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Series Episode #</label>
+              <div class="col-sm-8">
+                <input class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Status</label>
+              <div class="col-sm-8">
                 <select class="form-control">
-                    <option></option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <option></option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
                 </select>
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">Content Rating</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Content Rating</label>
+              <div class="col-sm-8">
                 <select class="form-control">
-                    <option></option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <option></option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
                 </select>
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">Content Rating Descriptor</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Content Rating Descriptor</label>
+              <div class="col-sm-8">
                 <select class="form-control">
-                    <option></option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <option></option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
                 </select>
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">SAP</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">SAP</label>
+              <div class="col-sm-8">
                 <select class="form-control">
-                    <option> </option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <option> </option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
                 </select>
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Broadcast Sequence</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Broadcast Sequence</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Keywords</label>
-            <div class="col-sm-8">
+            <div class="form-group row">
+              <label class="col-sm-4 form-control-label">Keywords</label>
+              <div class="col-sm-8">
                 <input class="form-control">
+              </div>
             </div>
-        </div>
 
-    </div>
+          </div>
 
-</md-sidenav>
-<md-sidenav md-component-id="addVersion" class="md-sidenav-left">
+        </md-sidenav>
 
-    <md-toolbar ng-controller="showController">
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
-            </md-button>
-            <h2>
-                <span>Add Version</span>
-            </h2>
-            <span flex></span>
-            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddVersion()">
-                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
-            </md-button>
-
-
-        </div>
-    </md-toolbar>
-
-</md-sidenav>
-<md-sidenav md-component-id="designer" class="md-sidenav-left">
-
-    <md-toolbar ng-controller="showController">
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
-            </md-button>
-            <h2>
-                <span>Designer</span>
-            </h2>
-            <span flex></span>
-            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openDesignerMenu()">
-                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
-            </md-button>
-
-
-        </div>
-    </md-toolbar>
-    <md-content>
-        <div>
-            Toggle column:
-            <a class="toggle-vis" data-column="0">Name</a> -
-            <a class="toggle-vis" data-column="1">Position</a> -
-            <a class="toggle-vis" data-column="2">Office</a> -
-            <a class="toggle-vis" data-column="3">Age</a> -
-            <a class="toggle-vis" data-column="4">Start date</a>  -
-            <a class="toggle-vis" data-column="5">Salary</a>
-        </div>
-    </md-content>
-
-</md-sidenav>
-<md-sidenav md-component-id="edit-episode" class="md-sidenav-left large-slideout">
-
-    <md-toolbar ng-controller="showController">
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
-            </md-button>
-            <h2>
-                <span>Edit Episode Details</span>
-            </h2>
-            <span flex></span>
-            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
-                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
-            </md-button>
-
-
-        </div>
-
-    </md-toolbar>
-    <div id="episode-info">
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Episode Title</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="Blackout">
+        <div id="psp">
+          <header>
+            <div id="psp_controls">
+              <div id="toggle_isi" class="btn">
+                <md-icon md-svg-icon="assets/svg/designer.svg"></md-icon>
+              </div>
             </div>
-        </div>
+          </header>
+          <main>
+            <section>
+              <div class="season-columns" style="display: none;">
+                <h3>Show/Hide Season Table Columns</h3>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Short Episode Title</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="Blackout">
-            </div>
-        </div>
+                <i data-column="0" class="toggle-vis fa fa-toggle-on"> Name</i>
+                <i data-column="1" class="toggle-vis fa fa-toggle-on"> Show Code</i>
+                <i data-column="2" class="toggle-vis fa fa-toggle-on"> Production #</i>
+                <i data-column="3" class="toggle-vis fa fa-toggle-on"> Status</i>
+                <i data-column="4" class="toggle-vis fa fa-toggle-on"> Note</i>
+                <i data-column="5" class="toggle-vis fa fa-toggle-on"> Fiscal Year</i>
+                <i data-column="6" class="toggle-vis fa fa-toggle-on"> Broadcast Season</i>
+                <i data-column="7" class="toggle-vis fa fa-toggle-on"> Rough Format</i>
+                <i data-column="8" class="toggle-vis fa fa-toggle-on"> Episode Count</i>
+                <i data-column="9" class="toggle-vis fa fa-toggle-on"> Program Category</i>
+              </div>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Run Time Duration</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="01:00:00:">
-            </div>
-        </div>
+              <div class="episode-columns" style="display: none;">
+                <h3>Show/Hide Episode Table Columns</h3>
 
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Traffic Code</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="XRM06005">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Episode Code</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="XRM-605">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Link Code</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Episode #</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="5">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Series Episode #</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="110">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">Status</label>
-            <div class="col-sm-8">
-                <select class="form-control">
-                    <option>Active</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">Content Rating</label>
-            <div class="col-sm-8">
-                <select class="form-control">
-                    <option>TV-MA</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">Content Rating Descriptor</label>
-            <div class="col-sm-8">
-                <select class="form-control">
-                    <option>L, S, V</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-4 form-control-label">SAP</label>
-            <div class="col-sm-8">
-                <select class="form-control">
-                    <option> </option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Broadcast Sequence</label>
-            <div class="col-sm-8">
-                <input class="form-control" value="110">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label  class="col-sm-4 form-control-label">Keywords</label>
-            <div class="col-sm-8">
-                <input class="form-control">
-            </div>
-        </div>
-
-    </div>
-</md-sidenav>
-<md-sidenav md-component-id="left" class="md-sidenav-left">
-
-    <md-toolbar ng-controller="showController">
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
-            </md-button>
-            <h2>
-                <span>Search</span>
-            </h2>
-            <span flex></span>
-            <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openLeftMenu()">
-                <md-icon md-svg-icon="assets/svg/close.svg"></md-icon>
-            </md-button>
+                <i data-column="0" class="toggle-vis fa fa-toggle-on"> Title</i>
+                <i data-column="1" class="toggle-vis fa fa-toggle-on"> Network</i>
+                <i data-column="2" class="toggle-vis fa fa-toggle-on"> Code</i>
+                <i data-column="3" class="toggle-vis fa fa-toggle-on"> Status</i>
+                <i data-column="4" class="toggle-vis fa fa-toggle-on"> Run Time Duration</i>
+                <i data-column="5" class="toggle-vis fa fa-toggle-on"> Description</i>
+                <i data-column="6" class="toggle-vis fa fa-toggle-on"> Category</i>
+                <i data-column="7" class="toggle-vis fa fa-toggle-on"> Genre</i>
+                <i data-column="8" class="toggle-vis fa fa-toggle-on"> Production Company</i>
+                <i data-column="9" class="toggle-vis fa fa-toggle-on"> Supplier</i>
+              </div>
 
 
-        </div>
-    </md-toolbar>
+              <h3>Theme Creator</h3>
 
-    <!-- add `multiple` attribute to allow multiple sections to open at once -->
-    <v-accordion class="vAccordion--default slide-out" multiple>
-
-        <!-- add expanded attribute to open the section -->
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Networks <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                    <div class="form-group row">
-                        <label  class="col-sm-3 form-control-label">Filter</label>
-                        <div class="">
-                            <input class="form-control" value="Blackout">
-                        </div>
-                    </div>
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Programs <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Production Cycles <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Distributors <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Contract Rights <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Episodes <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Sports/Teams <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Venue <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Cast / Crew / Awards <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Media <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen">
-                Search Air Dates <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i>
-            </v-pane-header>
-
-            <v-pane-content>
-                Pane content #1
-            </v-pane-content>
-        </v-pane>
-
-    </v-accordion>
-
-</md-sidenav>
-
-
-<div flex tabIndex="-1" role="main">
-    <div class="router"><button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu">here</span></button>
-    <nav id="ml-menu" class="nav-menu">
-        <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
-        <div class="menu__wrap">
-            <ul data-menu="main" class="menu__level">
-                <li class="menu__item show-episodes"><a class="menu__link" data-submenu="submenu-1" href="#">Episodes</a></li>
-            </ul>
-            <!-- Submenu 1 -->
-            <ul data-menu="submenu-1" class="menu__level">
-                <li class="menu__item show-production-cycles"><a class="menu__link" data-submenu="submenu-1-1" href="#">Production Cycles</a></li>
-            </ul>
-            <!-- Submenu 1-2 -->
-            <ul data-menu="submenu-1-1" class="menu__level">
-                <li class="menu__item show-media-versions"><a class="menu__link" data-submenu="submenu-1-2" href="#">Media Versions</a></li>
-            </ul>
-            <!-- Submenu 1-3 -->
-            <ul data-menu="submenu-1-2" class="menu__level">
-                <li class="menu__item show-media-versions"><a class="menu__link" data-submenu="submenu-1-3" href="#"></a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-    <v-accordion class="vAccordion--default" multiple>
-
-        <!-- add expanded attribute to open the section -->
-        <v-pane expanded>
-            <v-pane-header ng-click="isOpen = !isOpen" id="show-list">
-                <md-toolbar class="secondary">
-                    <h1>Shows<i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i></h1>
-                </md-toolbar>
-            </v-pane-header>
-
-            <v-pane-content>
-                <div class="sep">
-                    <table id="shows" class="display" width="100%"></table>
-                </div>
-            </v-pane-content>
-        </v-pane>
-
-        <v-pane>
-            <v-pane-header ng-click="isOpen = !isOpen" id="gen-info">
-                <md-toolbar layout="row" class="secondary">
-                    <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show Show List">
-                        <md-icon md-svg-icon="menu"></md-icon>
-                    </md-button>
-                    <h1>Show Details <i ng-class="{'fa-caret-up':isOpen, 'fa-caret-down':!isOpen}" class="fa pull-right"></i></h1>
-                </md-toolbar>
-            </v-pane-header>
-
-            <v-pane-content>
-
-         <md-content flex="" class="content">
-
-
-             <div class="episodes-container" style="display: none;">
-                 <div>
-
-                     <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
-                         Add Episode  <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
-                     </md-button>
-
-                     <md-button class="" id="edit-episode-toggle" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
-                         Edit Episode  <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
-                     </md-button>
-
-                     <div class="sep2">
-                         <table id="episodes" class="display" width="100%"></table>
-                     </div>
-                 </div>
-
-             </div>
-             <div class="production-cycle-container" style="display: none;">
-                 <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
-                     Add Production Cycle  <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
-                 </md-button>
-                 <div class="sep">
-                     <table id="production" class="display" width="100%"></table>
-                 </div>
-             </div>
-             <div class="media-version-container" style="display: none;">
-
-                 <div>
-                     <md-button class="md-icon-button" aria-label="Settings" ng-controller="shows" ng-click="openAddVersion()">
-                         <md-icon md-svg-icon="assets/svg/add.svg">Add Media Version</md-icon>
-                     </md-button>
-                     <div>
-                         <table id="versions" class="display" width="100%"></table>
-                     </div>
-                 </div>
-
-             </div>
-                <div class="inline-form">
-                            <ul class="quick-nav">
-                                <li>
-                                    <md-button ng-model="collapsedGeneralInfo" ng-click="collapsedGeneralInfo=!collapsedGeneralInfo" id="gen-info-toggle">
-                                        <md-icon md-svg-icon="assets/svg/info.svg"></md-icon>
-                                        General Info
-                                    </md-button>
-                                </li>
-                            </ul>
-                            <div layout="column" ng-cloak class="md-inline-form col-md-6">
-                                <form>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 form-control-label">Network</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option>FX NETWORK</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 form-control-label">TYPE</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option>Series</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Show Title</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" value="Rescue Me">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Short Show Title</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" value="Rescue Me">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Show Code</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" value="XRM">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 form-control-label">Primary Category</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option>ORIGINAL SERIES</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Description</label>
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" rows="3" placeholder="The crew of the New York City's 62 Truck must face life-and-death situations associated with being a firefighter, protectingtheir true emotions with dark humor."></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Run Time Duration</label>
-                                        <div class="col-sm-10">
-                                            <input type="number" name="quantity" min="1" max="5">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Production Company</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" value="TCFTV">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 form-control-label">SAP</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option></option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Close Captioned</label>
-                                        <div class="col-sm-10">
-                                            <input type="checkbox" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 form-control-label">Status</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option>Active</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 form-control-label">Series Type</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option>Original</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label  class="col-sm-2 form-control-label">Genres</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" value="Drama">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 form-control-label">Language</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control">
-                                                <option>English</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                </md-content>
-            </v-pane-content>
-        </v-pane>
-    </v-accordion>
-
-</div>
-
-<div id="psp">
-    <header>
-        <div id="psp_controls">
-            <div id="toggle_isi" class="btn"><md-icon md-svg-icon="assets/svg/designer.svg"></md-icon></div>
-        </div>
-    </header>
-    <main>
-        <section>
-            <h3>Theme Creator</h3>
-
-            <ul class="mc-controls">
+              <ul class="mc-controls">
                 <li>
-                    <div class="form-group">
-                        <label for="hidden-input">Primary Background Color</label>
-                        <br>
-                        <input type="hidden" id="mc-primary" class="demo" value="#74A0B3">
-                    </div>
+                  <div class="form-group">
+                    <label for="hidden-input">Primary Background Color</label>
+                    <br>
+                    <input type="hidden" id="mc-primary" class="demo" value="#74A0B3">
+                  </div>
                 </li>
                 <li>
-                    <div class="form-group">
-                        <label for="hidden-input">Primary Font Color</label>
-                        <br>
-                        <input type="hidden" id="mc-font" class="demo" value="#74A0B3">
-                    </div>
+                  <div class="form-group">
+                    <label for="hidden-input">Primary Font Color</label>
+                    <br>
+                    <input type="hidden" id="mc-font" class="demo" value="#74A0B3">
+                  </div>
                 </li>
                 <li>
-                    <div class="form-group">
-                        <label for="hidden-input">Table Data Color</label>
-                        <br>
-                        <input type="hidden" id="mc-table-data" class="demo" value="#a7a37e">
-                    </div>
+                  <div class="form-group">
+                    <label for="hidden-input">Table Data Color</label>
+                    <br>
+                    <input type="hidden" id="mc-table-data" class="demo" value="#a7a37e">
+                  </div>
                 </li>
-            </ul>
+              </ul>
 
-            <h3>Show/Hide Table Columns</h3>
-            <div>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="0"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Title</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="1"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Network</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="2"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Code</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="3"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Status</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="4"><i class="button__icon icon fa fa-toggle-on"></i><span>Run Time Duration</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="5"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Description</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="6"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Category</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="7"><i class="button__icon icon fa fa-toggle-on"></i><span>Show Genre</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="8"><i class="button__icon icon fa fa-toggle-on"></i><span>Production Company</span></button>
-                <button class="button button--naira button--round-s button--border-thin toggle-vis" data-column="9"><i class="button__icon icon fa fa-toggle-on"></i><span>Supplier</span></button>
 
-            </div>
-            <div flex class="transition-setting">
-            <div class="pt-triggers">
-                <div id="dl-menu" class="dl-menuwrapper">
+              <div flex class="transition-setting">
+                <div class="pt-triggers">
+                  <div id="dl-menu" class="dl-menuwrapper">
                     <button class="dl-trigger">Choose a transition</button>
                     <ul class="dl-menu">
-                        <li>
-                            <a href="#">Move</a>
+                      <li>
+                        <a href="#">Move</a>
+                        <ul class="dl-submenu">
+                          <li data-animation="1"><a href="#">Move to left/ from right</a></li>
+                          <li data-animation="2"><a href="#">Move to right/ from left</a></li>
+                          <li data-animation="3"><a href="#">Move to top/ from bottom</a></li>
+                          <li data-animation="4"><a href="#">Move to bottom/ from top</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#">Fade</a>
+                        <ul class="dl-submenu">
+                          <li data-animation="5"><a href="#">Fade / from right</a></li>
+                          <li data-animation="6"><a href="#">Fade / from left</a></li>
+                          <li data-animation="7"><a href="#">Fade / from bottom</a></li>
+                          <li data-animation="8"><a href="#">Fade / from top</a></li>
+                          <li data-animation="9"><a href="#">Fade left / Fade right</a></li>
+                          <li data-animation="10"><a href="#">Fade right / Fade left</a></li>
+                          <li data-animation="11"><a href="#">Fade top / Fade bottom</a></li>
+                          <li data-animation="12"><a href="#">Fade bottom / Fade top</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#">Different easing</a>
+                        <ul class="dl-submenu">
+                          <li data-animation="13"><a href="#">Different easing / from right</a></li>
+                          <li data-animation="14"><a href="#">Different easing / from left</a></li>
+                          <li data-animation="15"><a href="#">Different easing / from bottom</a></li>
+                          <li data-animation="16"><a href="#">Different easing / from top</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#">Scale</a>
+                        <ul class="dl-submenu">
+                          <li data-animation="17"><a href="#">Scale down / from right</a></li>
+                          <li data-animation="18"><a href="#">Scale down / from left</a></li>
+                          <li data-animation="19"><a href="#">Scale down / from bottom</a></li>
+                          <li data-animation="20"><a href="#">Scale down / from top</a></li>
+                          <li data-animation="21"><a href="#">Scale down / scale down</a></li>
+                          <li data-animation="22"><a href="#">Scale up / scale up</a></li>
+                          <li data-animation="23"><a href="#">Move to left / scale up</a></li>
+                          <li data-animation="24"><a href="#">Move to right / scale up</a></li>
+                          <li data-animation="25"><a href="#">Move to top / scale up</a></li>
+                          <li data-animation="26"><a href="#">Move to bottom / scale up</a></li>
+                          <li data-animation="27"><a href="#">Scale down / scale up</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#">Rotate</a>
+                        <ul class="dl-submenu">
+                          <li>
+                            <a href="#">Glue</a>
                             <ul class="dl-submenu">
-                                <li data-animation="1"><a href="#">Move to left/ from right</a></li>
-                                <li data-animation="2"><a href="#">Move to right/ from left</a></li>
-                                <li data-animation="3"><a href="#">Move to top/ from bottom</a></li>
-                                <li data-animation="4"><a href="#">Move to bottom/ from top</a></li>
+                              <li data-animation="28"><a href="#">Glue left / from right</a></li>
+                              <li data-animation="29"><a href="#">Glue right / from left</a></li>
+                              <li data-animation="30"><a href="#">Glue bottom / from top</a></li>
+                              <li data-animation="31"><a href="#">Glue top / from bottom</a></li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="#">Fade</a>
+                          </li>
+                          <li>
+                            <a href="#">Flip</a>
                             <ul class="dl-submenu">
-                                <li data-animation="5"><a href="#">Fade / from right</a></li>
-                                <li data-animation="6"><a href="#">Fade / from left</a></li>
-                                <li data-animation="7"><a href="#">Fade / from bottom</a></li>
-                                <li data-animation="8"><a href="#">Fade / from top</a></li>
-                                <li data-animation="9"><a href="#">Fade left / Fade right</a></li>
-                                <li data-animation="10"><a href="#">Fade right / Fade left</a></li>
-                                <li data-animation="11"><a href="#">Fade top / Fade bottom</a></li>
-                                <li data-animation="12"><a href="#">Fade bottom / Fade top</a></li>
+                              <li data-animation="32"><a href="#">Flip right</a></li>
+                              <li data-animation="33"><a href="#">Flip left</a></li>
+                              <li data-animation="34"><a href="#">Flip top</a></li>
+                              <li data-animation="35"><a href="#">Flip bottom</a></li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="#">Different easing</a>
+                          </li>
+                          <li data-animation="36"><a href="#">Fall</a></li>
+                          <li data-animation="37"><a href="#">Newspaper</a></li>
+                          <li>
+                            <a href="#">Push / Pull</a>
                             <ul class="dl-submenu">
-                                <li data-animation="13"><a href="#">Different easing / from right</a></li>
-                                <li data-animation="14"><a href="#">Different easing / from left</a></li>
-                                <li data-animation="15"><a href="#">Different easing / from bottom</a></li>
-                                <li data-animation="16"><a href="#">Different easing / from top</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Scale</a>
-                            <ul class="dl-submenu">
-                                <li data-animation="17"><a href="#">Scale down / from right</a></li>
-                                <li data-animation="18"><a href="#">Scale down / from left</a></li>
-                                <li data-animation="19"><a href="#">Scale down / from bottom</a></li>
-                                <li data-animation="20"><a href="#">Scale down / from top</a></li>
-                                <li data-animation="21"><a href="#">Scale down / scale down</a></li>
-                                <li data-animation="22"><a href="#">Scale up / scale up</a></li>
-                                <li data-animation="23"><a href="#">Move to left / scale up</a></li>
-                                <li data-animation="24"><a href="#">Move to right / scale up</a></li>
-                                <li data-animation="25"><a href="#">Move to top / scale up</a></li>
-                                <li data-animation="26"><a href="#">Move to bottom / scale up</a></li>
-                                <li data-animation="27"><a href="#">Scale down / scale up</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Rotate</a>
-                            <ul class="dl-submenu">
-                                <li>
-                                    <a href="#">Glue</a>
-                                    <ul class="dl-submenu">
-                                        <li data-animation="28"><a href="#">Glue left / from right</a></li>
-                                        <li data-animation="29"><a href="#">Glue right / from left</a></li>
-                                        <li data-animation="30"><a href="#">Glue bottom / from top</a></li>
-                                        <li data-animation="31"><a href="#">Glue top / from bottom</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Flip</a>
-                                    <ul class="dl-submenu">
-                                        <li data-animation="32"><a href="#">Flip right</a></li>
-                                        <li data-animation="33"><a href="#">Flip left</a></li>
-                                        <li data-animation="34"><a href="#">Flip top</a></li>
-                                        <li data-animation="35"><a href="#">Flip bottom</a></li>
-                                    </ul>
-                                </li>
-                                <li data-animation="36"><a href="#">Fall</a></li>
-                                <li data-animation="37"><a href="#">Newspaper</a></li>
-                                <li>
-                                    <a href="#">Push / Pull</a>
-                                    <ul class="dl-submenu">
-                                        <li data-animation="38"><a href="#">Push left / from right</a></li>
-                                        <li data-animation="39"><a href="#">Push right / from left</a></li>
-                                        <li data-animation="40"><a href="#">Push top / from bottom</a></li>
-                                        <li data-animation="41"><a href="#">Push bottom / from top</a></li>
+                              <li data-animation="38"><a href="#">Push left / from right</a></li>
+                              <li data-animation="39"><a href="#">Push right / from left</a></li>
+                              <li data-animation="40"><a href="#">Push top / from bottom</a></li>
+                              <li data-animation="41"><a href="#">Push bottom / from top</a></li>
 
-                                        <li data-animation="42"><a href="#">Push left / pull right</a></li>
-                                        <li data-animation="43"><a href="#">Push right / pull left</a></li>
-                                        <li data-animation="44"><a href="#">Push top / pull bottom</a></li>
-                                        <li data-animation="45"><a href="#">Push bottom / pull top</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Fold / Unfold</a>
-                                    <ul class="dl-submenu">
-                                        <li data-animation="46"><a href="#">Fold left / from right</a></li>
-                                        <li data-animation="47"><a href="#">Fold right / from left</a></li>
-                                        <li data-animation="48"><a href="#">Fold top / from bottom</a></li>
-                                        <li data-animation="49"><a href="#">Fold bottom / from top</a></li>
-                                        <li data-animation="50"><a href="#">Move to right / unfold left</a></li>
-                                        <li data-animation="51"><a href="#">Move to left / unfold right</a></li>
-                                        <li data-animation="52"><a href="#">Move to bottom / unfold top</a></li>
-                                        <li data-animation="53"><a href="#">Move to top / unfold bottom</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Room</a>
-                                    <ul class="dl-submenu">
-                                        <li data-animation="54"><a href="#">Room to left</a></li>
-                                        <li data-animation="55"><a href="#">Room to right</a></li>
-                                        <li data-animation="56"><a href="#">Room to top</a></li>
-                                        <li data-animation="57"><a href="#">Room to bottom</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Cube</a>
-                                    <ul class="dl-submenu">
-                                        <li data-animation="58"><a href="#">Cube to left</a></li>
-                                        <li data-animation="59"><a href="#">Cube to right</a></li>
-                                        <li data-animation="60"><a href="#">Cube to top</a></li>
-                                        <li data-animation="61"><a href="#">Cube to bottom</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Carousel</a>
-                                    <ul class="dl-submenu">
-                                        <li data-animation="62"><a href="#">Carousel to left</a></li>
-                                        <li data-animation="63"><a href="#">Carousel to right</a></li>
-                                        <li data-animation="64"><a href="#">Carousel to top</a></li>
-                                        <li data-animation="65"><a href="#">Carousel to bottom</a></li>
-                                    </ul>
-                                </li>
-                                <li data-animation="66"><a href="#">Sides</a></li>
+                              <li data-animation="42"><a href="#">Push left / pull right</a></li>
+                              <li data-animation="43"><a href="#">Push right / pull left</a></li>
+                              <li data-animation="44"><a href="#">Push top / pull bottom</a></li>
+                              <li data-animation="45"><a href="#">Push bottom / pull top</a></li>
                             </ul>
-                        </li>
-                        <li data-animation="67"><a href="#">Slide</a></li>
+                          </li>
+                          <li>
+                            <a href="#">Fold / Unfold</a>
+                            <ul class="dl-submenu">
+                              <li data-animation="46"><a href="#">Fold left / from right</a></li>
+                              <li data-animation="47"><a href="#">Fold right / from left</a></li>
+                              <li data-animation="48"><a href="#">Fold top / from bottom</a></li>
+                              <li data-animation="49"><a href="#">Fold bottom / from top</a></li>
+                              <li data-animation="50"><a href="#">Move to right / unfold left</a></li>
+                              <li data-animation="51"><a href="#">Move to left / unfold right</a></li>
+                              <li data-animation="52"><a href="#">Move to bottom / unfold top</a></li>
+                              <li data-animation="53"><a href="#">Move to top / unfold bottom</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#">Room</a>
+                            <ul class="dl-submenu">
+                              <li data-animation="54"><a href="#">Room to left</a></li>
+                              <li data-animation="55"><a href="#">Room to right</a></li>
+                              <li data-animation="56"><a href="#">Room to top</a></li>
+                              <li data-animation="57"><a href="#">Room to bottom</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#">Cube</a>
+                            <ul class="dl-submenu">
+                              <li data-animation="58"><a href="#">Cube to left</a></li>
+                              <li data-animation="59"><a href="#">Cube to right</a></li>
+                              <li data-animation="60"><a href="#">Cube to top</a></li>
+                              <li data-animation="61"><a href="#">Cube to bottom</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#">Carousel</a>
+                            <ul class="dl-submenu">
+                              <li data-animation="62"><a href="#">Carousel to left</a></li>
+                              <li data-animation="63"><a href="#">Carousel to right</a></li>
+                              <li data-animation="64"><a href="#">Carousel to top</a></li>
+                              <li data-animation="65"><a href="#">Carousel to bottom</a></li>
+                            </ul>
+                          </li>
+                          <li data-animation="66"><a href="#">Sides</a></li>
+                        </ul>
+                      </li>
+                      <li data-animation="67"><a href="#">Slide</a></li>
                     </ul>
-                </div><!-- /dl-menu-wrapper-->
-                <button id="iterateEffects" class="pt-touch-button">Show next page transition</button>
+                  </div>
+                  <!-- /dl-menu-wrapper-->
+                  <button id="iterateEffects" class="pt-touch-button">Show next page transition</button>
 
-            </div><!-- /triggers -->
+                </div>
+                <!-- /triggers -->
 
-            <div id="pt-main" class="pt-perspective">
-                <div class="pt-page pt-page-1"><h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
-                <div class="pt-page pt-page-2"><h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
-                <div class="pt-page pt-page-3"><h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
-                <div class="pt-page pt-page-4"><h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
-                <div class="pt-page pt-page-5"><h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
-                <div class="pt-page pt-page-6"><h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
-            </div>
-            </div>
-    </section>
-    </main>
-    </content>
-</div>
+                <div id="pt-main" class="pt-perspective">
+                  <div class="pt-page pt-page-1">
+                    <h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
+                  <div class="pt-page pt-page-2">
+                    <h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
+                  <div class="pt-page pt-page-3">
+                    <h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
+                  <div class="pt-page pt-page-4">
+                    <h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
+                  <div class="pt-page pt-page-5">
+                    <h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
+                  <div class="pt-page pt-page-6">
+                    <h1><span>A collection of</span><strong>View</strong> Transitions</h1></div>
+                </div>
+              </div>
+            </section>
+          </main>
+          </content>
+        </div>
+      </div>
+    </div>
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
 
-<script src="./bower_components/angular/angular.js"></script>
-<script src="./bower_components/jquery/dist/jquery.js"></script>
-<script src="./bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="./bower_components/angular-animate/angular-animate.js"></script>
-<script src="./bower_components/angular-material/angular-material.js"></script>
-<script src="./bower_components/angular-aria/angular-aria.js"></script>
-<script src="./bower_components/v-accordion/dist/v-accordion.js"></script>
-<script src="./bower_components/jquery-minicolors/jquery.minicolors.js"></script>
-<script src="./bower_components/classie/classie.js"></script>
-<script src="./assets/js/jquery.dlmenu.js"></script>
-<script src="./assets/js/pagetransitions.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script src="./bower_components/v-accordion/dist/v-accordion.js"></script>
+    <script src="./bower_components/jquery-minicolors/jquery.minicolors.js"></script>
+    <script src="./bower_components/classie/classie.js"></script>
+    <script src="./assets/js/jquery.dlmenu.js"></script>
+    <script src="./assets/js/pagetransitions.js"></script>
 
-<script src="./src/shows/shows.js"></script>
-<script src="./src/shows/showsController.js"></script>
-<script src="./src/shows/showsService.js"></script>
-<script src="./assets/js/nav-component.js"></script>
+    <script src="./src/shows/shows.js"></script>
+    <script src="./src/shows/showsController.js"></script>
+    <script src="./src/shows/showsService.js"></script>
+    <script src="./assets/js/nav-component.js"></script>
 
-<!--<script src="./src/production/production.js"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/colreorder/1.3.1/js/dataTables.colReorder.min.js"></script>
+    <script src="./bower_components/datatables/dataTables.colResize.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>
+
+    <!--<script src="./src/production/production.js"></script>
 <script src="./src/production/productionController.js"></script>
 <script src="./src/production/productionService.js"></script>-->
 
+    <script type="text/javascript">
+      var dataSetShows = [
+        ["X-Files", "FOX", "XRM", "Active", "00:30:00", "In one of the longest-running science fiction series in network TV history, FBI special agents investigate unexplained, mind-bending cases known as X-Files. ", "Original Series", "Drama ", "TCFTV ", " "],
+        ["Heros of the Storm", "FOX", "", "Active", "02:00:00", "Loren ipsun So dolar ite", "COMPETITION", " ", " ", " "],
+        ["GRINDER, THE", "FOX", "GRI", "Active", "00:30:00", "Loren ipsun So dolar ite", "COMEDY", " ", " ", " "],
 
-<script type="text/javascript">
-    angular
-            .module('starterApp', ['ngMaterial', 'vAccordion', 'shows'])
-            .config(function($mdThemingProvider, $mdIconProvider) {
+      ];
 
-                $mdIconProvider
-                        .icon("menu", "./assets/svg/menu.svg", 24)
-                        .icon("share", "./assets/svg/share.svg", 24)
-                        .icon("google_plus", "./assets/svg/google_plus.svg", 512)
-                        .icon("hangouts", "./assets/svg/hangouts.svg", 512)
-                        .icon("twitter", "./assets/svg/twitter.svg", 512)
-                        .icon("phone", "./assets/svg/phone.svg", 512);
-
-                $mdThemingProvider.theme('default')
-                        .primaryPalette('blue')
-                        .accentPalette('red');
-
-            }).controller( 'shows' , ['$q', '$scope', '$timeout', '$mdSidenav', function($q, $scope, $timeout, $mdSidenav) {
-
-                $scope.selected = [];
-
-                $scope.query = {
-                    order: 'name',
-                    limit: 5,
-                    page: 1
-                };
+      var dataSetNonLinear = [
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
+        ["Active", "FOX", "XRM", "Active", "00:30:00", "44", "True", "55 "],
 
 
+      ];
 
-                $scope.getTypes = function() {
-                    return ['Candy', 'Ice cream', 'Other', 'Pastry'];
-                };
-
-                $scope.toggleShowsList = function() {
-                    $mdSidenav('selectedShow').toggle();
-                };
-
-                $scope.openAddShow = function() {
-                    $mdSidenav('addShow').toggle();
-                };
-
-                $scope.openAddVersion = function() {
-                    $mdSidenav('addVersion').toggle();
-                };
-
-                $scope.openLeftMenu = function() {
-                    $mdSidenav('left').toggle();
-                };
-
-                $scope.openSettingsMenu = function() {
-                    $mdSidenav('settings').toggle();
-                };
-
-                $scope.openDesignerMenu = function() {
-                    $mdSidenav('designer').toggle();
-                };
-
-                $scope.editEpisode = function() {
-                    $mdSidenav('edit-episode').toggle();
-                };
-
-                $scope.onpagechange = function(page, limit) {
-                    var deferred = $q.defer();
-
-                    $timeout(function() {
-                        deferred.resolve();
-                    }, 2000);
-
-                    return deferred.promise;
-                };
-
-                $scope.onorderchange = function(order) {
-                    var deferred = $q.defer();
-
-                    $timeout(function() {
-                        deferred.resolve();
-                    }, 2000);
-
-                    return deferred.promise;
-                };
-            }]);
-
-</script>
-<script type="text/javascript">
-
-    (function() {
-        var menuEl = document.getElementById('ml-menu'),
-                mlmenu = new MLMenu(menuEl, {
-                    // breadcrumbsCtrl : true, // show breadcrumbs
-                    // initialBreadcrumb : 'all', // initial breadcrumb text
-                    backCtrl : false, // show back button
-                    // itemsDelayInterval : 60, // delay between each menu item sliding animation
-                    onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
-                });
-
-        // mobile menu toggle
-        var openMenuCtrl = document.querySelector('.action--open'),
-                closeMenuCtrl = document.querySelector('.action--close');
-
-        openMenuCtrl.addEventListener('click', openMenu);
-        closeMenuCtrl.addEventListener('click', closeMenu);
-
-        function openMenu() {
-            classie.add(menuEl, 'menu--open');
-        }
-
-        function closeMenu() {
-            classie.remove(menuEl, 'menu--open');
-        }
-
-        // simulate grid content loading
-        var gridWrapper = document.querySelector('.content');
-
-        function loadDummyData(ev, itemName) {
-            ev.preventDefault();
-
-            closeMenu();
-            gridWrapper.innerHTML = '';
-            classie.add(gridWrapper, 'content--loading');
-            setTimeout(function() {
-                classie.remove(gridWrapper, 'content--loading');
-                gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
-            }, 700);
-        }
-    })();
-
-    $('#mc-primary').minicolors({
-        //opacity: true
-    });
+      var dataSetProd = [
+        ["<a href=\"Show/X-Files/Season 1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " ", "Fiscal 2015 ", "19 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/Season 2/\" class=\"show-episodes \">Season 2</a>", "XRM ", "2", "Active", " ", "  ", "32 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/Season 3/\" class=\"show-episodes \">Season 3</a>", "XRM ", "3", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/Season 4/\" class=\"show-episodes \">Season 4</a>", "XRM ", "4", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/Season 5/\" class=\"show-episodes \">Season 5</a>", "XRM ", "5", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/Season 6/\" class=\"show-episodes \">Season 6</a>", "XRM ", "6", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
 
 
-    $('#mc-primary[type=hidden]').on('change', function() {
 
-        // This shows how to obtain the hex color and opacity (when in use)
-        var hex = $(this).val(),
-                opacity = $(this).attr('data-opacity');
+      ];
 
-        $('md-toolbar, #psp_controls').css('backgroundColor', hex);
-
-    });
-
-    $('#mc-font').minicolors({
-        //opacity: true
-    });
+      var dataSetProd1 = [
+        ["<a href=\"Show/X-Files/1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " ", "Fiscal 2015 ", "19 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/2/\" class=\"show-episodes \">Season 2</a>", "XRM ", "2", "Active", " ", "  ", "32 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/3/\" class=\"show-episodes \">Season 3</a>", "XRM ", "3", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/4/\" class=\"show-episodes \">Season 4</a>", "XRM ", "4", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/5/\" class=\"show-episodes \">Season 5</a>", "XRM ", "5", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
+        ["<a href=\"Show/X-Files/6/\" class=\"show-episodes \">Season 6</a>", "XRM ", "6", "Active", " ", "  ", "13 ", " ", " ", "12", ""],
 
 
-    $('#mc-font[type=hidden]').on('change', function() {
-
-        // This shows how to obtain the hex color and opacity (when in use)
-        var hex = $(this).val(),
-                opacity = $(this).attr('data-opacity');
-
-        $('v-pane-content div, a').css('color', hex);
-
-    });
-
-    $('#mc-table-data').minicolors({
-        //opacity: true
-    });
+      ];
 
 
-    $('#mc-table-data[type=hidden]').on('change', function() {
+      var dataContracts = [
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "4.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "2", "DRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "3", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "5", "XRM ", "1", "3.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "16", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "166", "XVM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "15", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "14", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "VRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "ARM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
+        ["Test Contract", "FULL ", "1", "XRM ", "1", "1.2 ", "1", "XRM ", "none", "XRM ", "1", "XRM ", "1"],
 
-        // This shows how to obtain the hex color and opacity (when in use)
-        var hex = $(this).val(),
-                opacity = $(this).attr('data-opacity');
 
-        $('td').css('color', hex);
+      ];
 
-    });
+      var dataStaff = [
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+        ["Test User", "XRM ", "1"],
+
+      ];
+
+      var dataSetProd2 = [
+        ["<a href=\"Show/X-Files/1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " test", "Fiscal 2015 ", "19 ", " test", " test", "12", "test", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell"],
+        ["<a href=\"Show/X-Files/1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " test", "Fiscal 2015 ", "19 ", " test", " test", "12", "test", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell"],
+        ["<a href=\"Show/X-Files/1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " test", "Fiscal 2015 ", "19 ", " test", " test", "12", "test", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell"],
+        ["<a href=\"Show/X-Files/1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " test", "Fiscal 2015 ", "19 ", " test", " test", "12", "test", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell"],
+        ["<a href=\"Show/X-Files/1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " test", "Fiscal 2015 ", "19 ", " test", " test", "12", "test", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell"],
+        ["<a href=\"Show/X-Files/1/\" class=\"show-episodes \">Season 1</a>", "XRM ", "1", "Active", " test", "Fiscal 2015 ", "19 ", " test", " test", "12", "test", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell", "example extra cell"],
 
 
-    var isi_open = false;
-    var menu_open = false;
+      ];
 
-    $("#toggle_isi").on("click",function(){
-        if(isi_open){
+      var dataSetEpisodes = [
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 1 The Begining\" class=\"show-gen-info \">The Begining</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 1 The Begining\" class=\"show-gen-info \">XRM-601</a>", " ", "1", "106", " ", "00:30:00", "6/28/2010", "TCFTV ", " "],
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 2 Episode Drive\" class=\"show-gen-info \">Drive</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 2 Episode Drive\" class=\"show-gen-info \">XRM-602</a>", " ", "2", "107", " ", "00:30:00", "6/28/2010 ", " "],
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 3 Triangle\" class=\"show-gen-info \">Triangle</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 3 Triangle\" class=\"show-gen-info \">XRM-603</a>", " ", "3", "108", " ", "00:30:00", "7/04/2010 ", " "],
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 4 Dreamland I\" class=\"show-gen-info \">Dreamland I</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 4 Dreamland I\" class=\"show-gen-info \">XRM-604</a>", " ", "4", "109", " ", "00:30:00", "7/11/2010 ", " "],
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 5 Dreamland II\" class=\"show-gen-info \">Dreamland II</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 5 Dreamland II\" class=\"show-gen-info \">XRM-605</a>", " ", "5", "110", " ", "00:30:00", "7/18/2010 ", " "],
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 6 How the Ghosts Stole Christmas\" class=\"show-gen-info \">How the Ghosts Stole Christmas</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 6 How the Ghosts Stole Christmas\" class=\"show-gen-info \">XRM-606</a>", " ", "6", "111", " ", "00:30:00", "7/22/2010 ", " "],
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 7 Terms of Endearment\" class=\"show-gen-info \">Terms of Endearment</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 7 Terms of Endearment\" class=\"show-gen-info \">XRM-607</a>", " ", "7", "112", " ", "00:30:00", "7/28/2010 ", " "],
+        ["<a href=\"Show/X-Files/Season 1/Episodes/Episode 8 The Rain King\" class=\"show-gen-info \">The Rain King</a>", "<a href=\"Show/X-Files/Season 1/Episodes/Episode 8 The Rain King\" class=\"show-gen-info \">XRM-608</a>", " ", "8", "113", " ", "00:30:00", "8/04/2010 ", " "],
+
+      ];
+
+      var dataSetVersions = [
+        ["Version 33", "New Season", "00:30:00", "00:30:00", "P5285", "7", "HD", "HDR", "G", "Fair",
+          "SAP", "CC", "Default", "Ipsum Dolar", "Active", "Fox", "06/16/14", "04/15/13 / 00:30:00", "2nd Air Date", "04/15/13 / 00:30:00", "04/15/13 / 00:30:00"
+        ]
+
+      ];
+
+
+      $(document).ready(function() {
+
+        $(".tree-nav ul li a").click(function(e) {
+
+
+          //e.preventDefault(); // prevent the default action
+          //e.stopPropagation(); // stop the click from bubbling
+          console.log("Handler for .click() called." + this);
+          $('li').find('.active-route').removeClass('active-route');
+          $(this).addClass('active-route');
+
+        });
+
+        $('span.collapse').next().hide();
+        $("span.collapse").before("<span>+ </span>");
+        $("span.collapse").css("cursor", "pointer");
+        $("span.collapse").click(function() {
+          $(this).next().slideToggle("normal");
+          if ($(this).prev(this).text() == "+ ")
+            $(this).prev(this).replaceWith("<span>- </span>");
+          else if ($(this).prev(this).text() == "- ")
+            $(this).prev(this).replaceWith("<span>+ </span>");
+        });
+
+
+
+
+        $('#mc-primary').minicolors({
+          //opacity: true
+        });
+
+
+        $('#mc-primary[type=hidden]').on('change', function() {
+
+          // This shows how to obtain the hex color and opacity (when in use)
+          var hex = $(this).val(),
+            opacity = $(this).attr('data-opacity');
+
+          $('md-toolbar, #psp_controls').css('backgroundColor', hex);
+
+        });
+
+        $('#mc-font').minicolors({
+          //opacity: true
+        });
+
+
+        $('#mc-font[type=hidden]').on('change', function() {
+
+          // This shows how to obtain the hex color and opacity (when in use)
+          var hex = $(this).val(),
+            opacity = $(this).attr('data-opacity');
+
+          $('v-pane-content div, a').css('color', hex);
+
+        });
+
+        $('#mc-table-data').minicolors({
+          //opacity: true
+        });
+
+
+        $('#mc-table-data[type=hidden]').on('change', function() {
+
+          // This shows how to obtain the hex color and opacity (when in use)
+          var hex = $(this).val(),
+            opacity = $(this).attr('data-opacity');
+
+          $('td').css('color', hex);
+
+        });
+
+
+        var isi_open = false;
+        var menu_open = false;
+
+        $("#toggle_isi").on("click", function() {
+          if (isi_open) {
             $('#psp').animate({
-                top:"95%"
+              top: "95%"
             });
             isi_open = false;
-        }else{
+          } else {
             $('#psp').animate({
-                top:"45.5%"
+              top: "45.5%"
             });
             isi_open = true;
-        }
-    });
+          }
+        });
 
-    $('#toggle_nav').on("click", function(){
-        if(menu_open){
+        $('#toggle_nav').on("click", function() {
+          if (menu_open) {
             $('#main_content').stop().animate({
-                marginLeft:0
+              marginLeft: 0
             });
             menu_open = false;
-        }else{
+          } else {
             $('#main_content').stop().animate({
-                marginLeft:240
+              marginLeft: 240
             });
             menu_open = true;
-        }
-    });
-
-    var dataSetShows = [
-        [ "Rescue Me", "FOX", "XRM", "Active", "00:30:00", "The crew of the New York City's 62 Truck must face life-and-death situations associated with being a firefighter, protectingtheir true emotions with dark humor.", "Original Series", "Drama ", "TCFTV ", " " ],
-        [ "Heros of the Storm", "FOX", "", "Active", "02:00:00", "Loren ipsun So dolar ite", "COMPETITION", " ", " ", " " ],
-        [ "GRINDER, THE", "FOX", "GRI", "Active", "00:30:00", "Loren ipsun So dolar ite", "COMEDY", " ", " ", " " ],
-
-    ];
-
-    var dataSetProd = [
-        [ "Season 1", "XRM ", "1", "Active", " ","Fiscal 2015 ","19 "," ", " ", "12", "" ],
-        [ "Season 2", "XRM ", "2", "Active", " ","  ","32 "," ", " ", "12", "" ],
-        [ "Season 3", "XRM ", "3", "Active", " ","  ","13 "," ", " ", "12", "" ],
-        [ "Season 4", "XRM ", "4", "Active", " ","  ","13 "," ", " ", "12", "" ],
-        [ "Season 5", "XRM ", "5", "Active", " ","  ","13 "," ", " ", "12", "" ],
-        [ "Season 6", "XRM ", "6", "Active", " ","  ","13 "," ", " ", "12", "" ],
+          }
+        });
 
 
-    ];
+        $("body").on("click", function() {
 
-    var dataSetEpisodes = [
-        [ "Legacy", "XRM-601", " ", "1", "106", " ", "00:30:00", "6/28/2010", "TCFTV ", " " ],
-        [ "Change", "XRM-602", " ", "2", "107", " ", "00:30:00",  "6/28/2010 ", " " ],
-        [ "Comeback", "XRM-603", " ", "3", "108", " ", "00:30:00",  "7/04/2010 ", " " ],
-        [ "Breakout", "XRM-604", " ", "4", "109", " ", "00:30:00",  "7/11/2010 ", " " ],
-        [ "Blackout", "XRM-605", " ", "5", "110", " ", "00:30:00", "7/18/2010 ", " " ],
-        [ "Sanctuary", "XRM-606", " ", "6", "111", " ", "00:30:00",  "7/22/2010 ", " " ],
-        [ "Forgiven", "XRM-607", " ", "7", "112", " ", "00:30:00",  "7/28/2010 ", " " ],
-        [ "Cowboy", "XRM-608", " ", "8", "113", " ", "00:30:00",  "8/04/2010 ", " " ],
+          $("td").click(function() {
+            $('td ').attr('contenteditable', 'true');
+          });
+        });
 
-    ];
 
-    var dataSetVersions = [
-        [ "Version 33" ,  "New Season" ,  "00:30:00", "00:30:00",  "P5285",  "7",  "HD",  "HDR" ,  "G",   "Fair",
-            "SAP", "CC",  "Default",  "Ipsum Dolar", "Active",  "Fox",  "06/16/14", "04/15/13 / 00:30:00", "2nd Air Date", "04/15/13 / 00:30:00", "04/15/13 / 00:30:00" ]
 
-    ];
 
-    var table = $('#example').DataTable( {
-        "scrollY": "200px",
-        "paging": false
-    } );
 
-    $('a.toggle-vis').on( 'click', function (e) {
-        e.preventDefault();
 
-        // Get the column API object
-        var column = table.column( $(this).attr('data-column') );
 
-        // Toggle the visibility
-        column.visible( ! column.visible() );
-    } );
 
-    $(document).ready(function() {
+
 
         var showsTable = $('#shows').DataTable({
-            data: dataSetShows,
-            columns: [
-                { title: "Show Title" },
-                { title: "Show Network" },
-                { title: "Show Code" },
-                { title: "Show Status" },
-                { title: "Run Time Duration" },
-                { title: "Show Description" },
-                { title: "Show Category" },
-                { title: "Show Genre" },
-                { title: "Production Company" },
-                { title: "Supplier" }
-            ]
+          data: dataSetShows,
+          columns: [{
+            title: "Show Title"
+          }, {
+            title: "Show Network"
+          }, {
+            title: "Show Code"
+          }, {
+            title: "Show Status"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Show Description"
+          }, {
+            title: "Show Category"
+          }, {
+            title: "Show Genre"
+          }, {
+            title: "Production Company"
+          }, {
+            title: "Supplier"
+          }]
         });
 
-        $('#shows tbody').on('click', 'tr', function () {
-            var data = showsTable.row( this ).data();
-            $( "#gen-info" ).trigger( "click" );
+        $('#shows tbody').on('click', 'tr', function() {
+          var data = showsTable.row(this).data();
+          $("#gen-info").trigger("click");
 
-            $( "#gen-info-toggle" ).trigger( "click" );
-            //alert( 'You clicked on '+data[0]+'\'s row' );
+          $("#gen-info-toggle").trigger("click");
+          alert('You clicked on ' + data[0] + '\'s row');
 
-            function sample() {
-                $( "#show-list" ).trigger( "click" );
-                $(".router").fadeIn();
-            }
+          function sample() {
+            $("#show-list").trigger("click");
+            $(".router").fadeIn();
+          }
 
-            setTimeout(sample, 800);
-
-
-        } );
-        $('button.toggle-vis').on( 'click', function (e) {
-            e.preventDefault();
-
-            // Get the column API object
-            var column = showsTable.column( $(this).attr('data-column') );
-
-            // Toggle the visibility
-            column.visible( ! column.visible() );
-        } );
+          setTimeout(sample, 800);
 
 
-        $('.show-episodes,  .menu__breadcrumbs a:nth-child(2)').on( 'click', function (e) {
-            e.preventDefault();
-            $(".inline-form").hide();
-            $(".episodes-container").show().addClass("pt-page-flipInTop pt-page-delay500");
-            $(".production-cycle-container").hide();
-        } );
+        });
 
-        $('.show-production-cycles, .menu__breadcrumbs a:nth-child(2)').on( 'click', function (e) {
-            e.preventDefault();
-            $(".episodes-container").hide();
-            $(".production-cycle-container").show().addClass("pt-page-rotateRoomTopIn");
-            $(".media-version-container").hide();
-        } );
 
-        $('.show-media-versions, .menu__breadcrumbs a:nth-child(2)').on( 'click', function (e) {
-            e.preventDefault();
-            $(".episodes-container").hide();
-            $(".production-cycle-container").hide();
-            $(".media-version-container").show().addClass("pt-page-rotateUnfoldTop");
-        } );
 
+
+
+        $('#seriesSeason tbody').on('click', 'tr', function() {
+
+          if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+          } else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+          }
+        });
+        $('#button').click(function() {
+          table.row('.selected').remove().draw(false);
+        });
+
+
+
+
+
+
+        $('.tempEditorShow').on('click', function(e) {
+          e.preventDefault();
+
+          $("#tree").hide();
+          $("#edit-tree").show();
+          $(".inline-form-show").show();
+          $(".seasons-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".episodes-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".genInfo").addClass("active-route");
+        });
+
+        $('.tempEditorEpisode').on('click', function(e) {
+          e.preventDefault();
+
+          $("#tree").hide();
+          $("#edit-tree").show();
+          $(".inline-form-episode").show();
+          $(".seasons-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".episodes-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".genInfo").addClass("active-route");
+        });
+
+        $('.tempEditorSeriesSeason').on('click', function(e) {
+          e.preventDefault();
+
+          $("#tree").hide();
+          $("#edit-tree").show();
+          $(".inline-form-season").show();
+          $(".seasons-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".episodes-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".genInfo").addClass("active-route");
+        });
+
+        $('.go-back').on('click', function(e) {
+          e.preventDefault();
+
+          $("#tree").show();
+          $("#edit-tree").hide();
+          $(".inline-form-show").hide();
+          $(".seasons-container").show().addClass("pt-page-flipInTop pt-page-delay500");
+          //$(".episodes-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          //$(".genInfo").addClass("active-route");
+        });
+
+
+        /*
+                $('.show-production-cycles, .menu__breadcrumbs a:nth-child(2)').on('click', function(e) {
+                  e.preventDefault();
+                  $(".episodes-container").hide();
+                  $(".production-cycle-container").show().addClass("pt-page-rotateRoomTopIn");
+                  $(".media-version-container").hide();
+                });
+
+                $('.show-media-versions, .menu__breadcrumbs a:nth-child(2)').on('click', function(e) {
+                  e.preventDefault();
+                  $(".episodes-container").hide();
+                  $(".production-cycle-container").hide();
+                  $(".media-version-container").show().addClass("pt-page-rotateUnfoldTop");
+                });
+        */
         var productionTable = $('#production').DataTable({
-            data: dataSetProd,
-            pagination: false,
-            columns: [
-                { title: "Name" },
-                { title: "Show Code" },
-                { title: "Production #" },
-                { title: "Status" },
-                { title: "Note" },
-                { title: "Fiscal Year" },
-                { title: "Broadcast Season" },
-                { title: "Rough Format" },
-                { title: "Episode Count" },
-                { title: "Program Category" }
-            ]
+          data: dataSetProd,
+          scrollX: true,
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Name"
+          }, {
+            title: "Show Code"
+          }, {
+            title: "Production #"
+          }, {
+            title: "Status"
+          }, {
+            title: "Note"
+          }, {
+            title: "Fiscal Year"
+          }, {
+            title: "Broadcast Season"
+          }, {
+            title: "Rough Format"
+          }, {
+            title: "Episode Count"
+          }, {
+            title: "Program Category"
+          }]
         });
 
-        $('#production tbody').on('click', 'tr', function () {
-            var data = productionTable.row( this ).data();
-            //alert( 'You clicked on '+data[0]+'\'s row' );
-        } );
+        $('#production tbody').on('click', 'tr', function() {
+          var data = productionTable.row(this).data();
+          //alert( 'You clicked on '+data[0]+'\'s row' );
+        });
 
 
 
         var episodeTable = $('#episodes').DataTable({
-            data: dataSetEpisodes,
-            pagination: false,
-            columns: [
-                { title: "Episode Title" },
-                { title: "Code" },
-                { title: "Link Code" },
-                { title: "Episode #" },
-                { title: "Series Episode #" },
-                { title: "Days" },
-                { title: "Run Time Duration" },
-                { title: "Orig Air Date" }
-            ]
+          data: dataSetEpisodes,
+          scrollX: "100%",
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Episode Title"
+          }, {
+            title: "Code"
+          }, {
+            title: "Link Code"
+          }, {
+            title: "Episode #"
+          }, {
+            title: "Series Episode #"
+          }, {
+            title: "Days"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Orig Air Date"
+          }]
         });
 
-        $('#episodes tbody').on('click', 'tr', function () {
-            var data = episodeTable.row( this ).data();
-            $( "#show-list" ).trigger( "click" );
-            $( "#edit-episode-toggle" ).trigger( "click" );
 
-            //var episodeInfo = $("#episode-info");
-            //episodeInfo.toggle();
-            //alert( 'You clicked on '+data[0]+'\'s row' );
-        } );
+
+        /*$('#episodes tbody').on('click', 'tr', function() {
+          var data = episodeTable.row(this).data();
+          $("#show-list").trigger("click");
+          $("#edit-episode-toggle").trigger("click");
+
+          //var episodeInfo = $("#episode-info");
+          //episodeInfo.toggle();
+          //alert( 'You clicked on '+data[0]+'\'s row' );
+        });*/
+        $('.episode-columns .toggle-vis').on('click', function(e) {
+          e.preventDefault();
+
+          // Get the column API object
+          var column = episodeTable.column($(this).attr('data-column'));
+
+          // Toggle the visibility
+          column.visible(!column.visible());
+        });
+
+        $('.season-columns .toggle-vis').on('click', function(e) {
+          e.preventDefault();
+
+          // Get the column API object
+          var column = seriesSeason.column($(this).attr('data-column'));
+
+          // Toggle the visibility
+          column.visible(!column.visible());
+        });
+
+
+        var contractsTable = $('#contractsTable, #contract').DataTable({
+          data: dataContracts,
+          scrollX: true,
+          scrollY: "410px",
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Type"
+          }, {
+            title: "Category"
+          }, {
+            title: "Code"
+          }, {
+            title: "Range"
+          }, {
+            title: "Ammount"
+          }, {
+            title: "Estimate"
+          }, {
+            title: "Notes"
+          }]
+        });
+
+
+        var nonLinearSchedulingRulesTable = $('#nonLinearSchedulingRulesTable').DataTable({
+          data: dataSetNonLinear,
+          scrollX: true,
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Status"
+          }, {
+            title: "Network Targets"
+          }, {
+            title: "Rule Type"
+          }, {
+            title: "Window Group"
+          }, {
+            title: "Max Streaming Days"
+          }, {
+            title: "Rolling Count"
+          }, {
+            title: "Sunset Rule"
+          }, {
+            title: "# of Days"
+          }]
+        });
+
+
+        var staffTable = $('#staffTable').DataTable({
+          data: dataStaff,
+          scrollX: true,
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Name"
+          }, {
+            title: "Title"
+          }, {
+            title: "Contact"
+          }]
+        });
 
 
 
         var versionsTable = $('#versions').DataTable({
-            data: dataSetVersions,
-            pagination: false,
-            columns: [
-                { title: "Version #" },
-                { title: "Version Name" },
-                { title: "Run Time Duration" },
-                { title: "Media Content Duration" },
-                { title: "Production Number" },
-                { title: "Segments" },
-                { title: "Rough Format" },
-                { title: "Format" },
-                { title: "Content Rating" },
-                { title: "Content Rating Desc" },
-                { title: "SAP" },
-                { title: "CC" },
-                { title: "Default" },
-                { title: "Comment" },
-                { title: "Status" },
-                { title: "Netowrk" },
-                { title: "Orig Air Date" },
-                { title: "Orig Air Day / Time" },
-                { title: "2nd Air Date" },
-                { title: "2nd Air Day / Time" },
-                { title: "Air Clock" }
-            ]
+          data: dataSetVersions,
+          scrollX: true,
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Version #"
+          }, {
+            title: "Version Name"
+          }, {
+            title: "Run Time Duration"
+          }, {
+            title: "Media Content Duration"
+          }, {
+            title: "Production Number"
+          }, {
+            title: "Segments"
+          }, {
+            title: "Rough Format"
+          }, {
+            title: "Format"
+          }, {
+            title: "Content Rating"
+          }, {
+            title: "Content Rating Desc"
+          }, {
+            title: "SAP"
+          }, {
+            title: "CC"
+          }, {
+            title: "Default"
+          }, {
+            title: "Comment"
+          }, {
+            title: "Status"
+          }, {
+            title: "Netowrk"
+          }, {
+            title: "Orig Air Date"
+          }, {
+            title: "Orig Air Day / Time"
+          }, {
+            title: "2nd Air Date"
+          }, {
+            title: "2nd Air Day / Time"
+          }, {
+            title: "Air Clock"
+          }]
         });
-        $('#versions tbody').on('click', 'tr', function () {
-            var data = versionsTable.row( this ).data();
-            //alert( 'You clicked on '+data[0]+'\'s row' );
-        } );
-    });
+        $('#versions tbody').on('click', 'tr', function() {
+          var data = versionsTable.row(this).data();
+          //alert( 'You clicked on '+data[0]+'\'s row' );
+        });
 
-</script>
-</body>
+        var seriesSeason = $('#seriesSeason').DataTable({
+          data: dataSetProd,
+          responsive: true,
+          autoWidth: false,
+          scrollX: true,
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Name"
+          }, {
+            title: "Show Code"
+          }, {
+            title: "Production #"
+          }, {
+            title: "Status"
+          }, {
+            title: "Note"
+          }, {
+            title: "Fiscal Year"
+          }, {
+            title: "Broadcast Season"
+          }, {
+            title: "Rough Format"
+          }, {
+            title: "Episode Count"
+          }, {
+            title: "Program Category"
+          }]
+        });
+
+
+
+
+        var broadcastSeason = $('#broadcastSeason').DataTable({
+          data: dataSetProd1,
+          scrollX: true,
+          pagination: false,
+          colReorder: true,
+          dom: ' B Zlfrtip',
+          buttons: ['copy', 'excel', 'pdf'],
+          columns: [{
+            title: "Name"
+          }, {
+            title: "Show Code"
+          }, {
+            title: "Production #"
+          }, {
+            title: "Status"
+          }, {
+            title: "Note"
+          }, {
+            title: "Fiscal Year"
+          }, {
+            title: "Broadcast Season"
+          }, {
+            title: "Rough Format"
+          }, {
+            title: "Episode Count"
+          }, {
+            title: "Program Category"
+          }]
+        });
+
+
+
+
+        $("body").on("click", ".show-seasons-toggle", function() {
+
+
+          $(".seasons-container").toggle().addClass("pt-page-flipInTop pt-page-delay500");
+          $("th:first-child").trigger("click");
+        });
+
+        $("body").on("click", ".show-grid-layout", function() {
+          $(".pt-page-delay500").toggleClass("grid-layout");
+
+        });
+
+        $("body").on("click", ".show-seasons", function() {
+
+          //e.preventDefault();
+          $(".gen-info-node").hide();
+          $(".episodes-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".search").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".seasons-container").show().addClass("pt-page-flipInTop pt-page-delay500");
+          $("th:first-child").trigger("click");
+        });
+
+
+
+        $("body").on("click", ".show-gen-info", function(e) {
+
+          console.log("-gen-info");
+          //e.preventDefault();
+          $(".inline-form-episode").show().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".episodes-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".search").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".seasons-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+        });
+
+
+
+
+
+
+
+        $("body").on("click", ".show-episodes", function() {
+          console.log($(this).text());
+          //e.preventDefault();
+          $(".gen-info-node").hide();
+          $(".seasons-container").hide().addClass("pt-page-flipInTop pt-page-delay500");
+          $(".episodes-container").show().addClass("pt-page-flipInTop pt-page-delay500");
+          $("th:first-child").trigger("click");
+        });
+
+
+
+
+      });
+
+    </script>
+  </body>
 
 </html>

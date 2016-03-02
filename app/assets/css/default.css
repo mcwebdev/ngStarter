@@ -23,7 +23,7 @@ body {
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 	color: #fff;
 	background: #333;
-	overflow: hidden;
+	overflow-y: scroll;
 }
 
 a {
@@ -95,7 +95,7 @@ a:hover {
 .codrops-icon-about:before {
 	content: "\e003";
 }
-
+ md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]).md-active{ color: blue; }
 @media screen and (max-width: 25em) { 
 	.codrops-icon span {
 		display: none;
