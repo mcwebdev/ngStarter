@@ -74,7 +74,7 @@
         </h2>
           <span flex><i class="fa fa-sitemap show-seasons-toggle"></i> &nbsp;<i class="fa fa-th-large show-grid-layout"></i></span>
           <md-button class="md-raised accent" aria-label="Learn More">
-            Learn More
+            Analytics
           </md-button>
           <md-button class="md-fab md-mini" aria-label="Favorite">
             <md-icon md-svg-icon="assets/svg/favorite.svg"></md-icon>
@@ -261,15 +261,27 @@
 
                 <div class="seasons-container" flex flex-order="1" style="display: none;">
 
-                  <md-content class="md-padding">
+                  
+<!-- 
+                <md-tabs md-stretch-tabs md-selected="selectedIndex">
+                  <md-tab> <a href="view1">View 1</a> </md-tab>
+                  <md-tab> <a href="view2">View 2</a> </md-tab>
+                  <md-tab> <a href="view3">View 3</a> </md-tab>
+                </md-tabs>
+
+                <div id="content" ng-view flex> </div> -->
+
+                    <md-tabs md-dynamic-height md-border-bottom class="season-tabs">
+                    <md-tab label="Series Season">
+                        <md-content class="md-padding">
                           <div layout="row" layout-align="end center" class="tools-node">
                             <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
-                              Add Series Season
+                              Add Season
                               <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                             </md-button>
 
-                            <md-button class="tempEditorSeriesSeason" aria-label="Settings">
-                              Edit Series Season
+                            <md-button class="tempEditorSeriesSeason" aria-label="Settings" ng-controller="shows">
+                              Edit Season
                               <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                             </md-button>
                           </div>
@@ -279,25 +291,30 @@
                             <table id="seriesSeason" class="display responsive no-wrap" width="100%"></table>
                           </div>
                         </md-content>
+                      </md-tab>
 
+                      <md-tab label="Broadcast Season">
                         <md-content class="md-padding">
                           <div layout="row" layout-align="end center" class="tools-node">
                             <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
-                              Add Broadcast Season
+                              Add Season
                               <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                             </md-button>
 
-                            <md-button class="tempEditorBroadcastSeason" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
-                              Edit Broadcast Season
+                            <md-button class="tempEditorEpisode" aria-label="Settings" ng-controller="shows">
+                              Edit Season
                               <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                             </md-button>
                           </div>
                           <div class="sep2">
 
+
                             <table id="broadcastSeason" class="display responsive no-wrap" width="100%"></table>
                           </div>
                         </md-content>
+                      </md-tab>
 
+                      <md-tab label="Contract">
                         <md-content class="md-padding">
                           <div layout="row" layout-align="end center" class="tools-node">
                             <md-button class="" aria-label="Settings" ng-controller="shows" ng-click="openAddShow()">
@@ -305,17 +322,25 @@
                               <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                             </md-button>
 
-                            <md-button class="tempEditorContract" aria-label="Settings" ng-controller="shows" ng-click="editEpisode()">
+                            <md-button class="tempEditorEpisode" aria-label="Settings" ng-controller="shows">
                               Edit Contract
                               <md-icon md-svg-icon="assets/svg/add.svg"></md-icon>
                             </md-button>
                           </div>
                           <div class="sep2">
 
-                            <table id="contract" class="display responsive no-wrap" width="100%"></table>
+
+                            <table id="contractsTable" class="display responsive no-wrap" width="100%"></table>
                           </div>
                         </md-content>
+                      </md-tab>
 
+                     
+
+                    </md-tabs>
+
+
+                  
                 </div>
 
 
